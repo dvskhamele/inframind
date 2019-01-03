@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+   <link rel="stylesheet" type="text/css" href="https://www.nkarbooking.com/codebase/dhtmlxcalendar.css"/>
+   <script src="https://www.nkarbooking.com/codebase/dhtmlxcalendar.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+         
+
+
+<link rel="stylesheet" href="/static/css/every_style.css"/>
+<link rel="stylesheet" href="/static/css/google_form.css"/>
+
+<link rel="stylesheet"
+   href="/static/css/custom.css"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111"><link rel="canonical" href="https://codepen.io/rajrs/pen/dMowNx">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<style type="text/css">
+  label{
+    font-weight:500;
+  }
+
+.col-md-4{
+  width:17.333333%;
+  max-width: 100%;
+}
+
+.col-md-8{
+  width:42.666667%;
+  min-width:max-content;
+}
+
+.form-horizontal .control-label {
+  text-align:-webkit-left;
+  min-width:max-content;
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+  <h1>Form</h1>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Premium Calculation</h4>
+      </div>
+      <div class="modal-body">
+
+        <h3> Response </h3>
+        <div id="Recieved">
+          {% for r,s in requested.items %} 
+
+        <p>{{ r }} - {{ s }} .</p>
+        {% endfor %}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <form  action="/proposal_creation/">
+        <button type="submit" class="btn btn-primary">Go for Proposal</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+       <table class="table table-striped">
+
+          <tbody>
+             <tr>
+                <td colspan="1">
+                  <div 
+                   class="list-group chat_log js-chat_log chat-bubble well form-horizontal" method="POST">
+                    {% csrf_token %}
+                      <fieldset>
+      
+                        
+
+
+
+
+                         {% for r,s in requested.items %} 
+                         
+
+                         <div class="form-group" style="display: none;">
+                          <label class="col-md-4 control-label">{{ r }}</label>
+                          <div class="col-md-8 inputGroupContainer">
+                             <div class="input-group" >
+                              <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-home"></i></span>
+      <input id="{{ r }}" name="{{ r }}" class="form-control" required="true" value="{{ s }}" style="display: none;" type="text" value=""
+      >                                  
+                              </div>
+                          </div>
+                         
+                        </div>
+                                           
+                       {% endfor %}
+               
+               
+                       
+ 
+
+
+               
+               
+                       <div class="form-group">
+  </div>
+                
+
+
+                      </div>
+                </td>
+             </tr>
+          </tbody>
+       </table>
+    </div>
+
+
+
+
+
+
+
+
+
+
+        <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/js.cookie.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script>
+
+      var chatterbotUrl ="/chatterbot/";
+      var csrftoken = Cookies.get('csrftoken');
+      
+function createRow(text) {
+
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain){
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
+
+      var $chatlog = $('.js-chat_log');
+      
+
+      var $input = $('.js-text');
+      var $sayButton = $('.js-say');
+
+        var inputData = {
+          'text': $input.val()
+        }
+        
+
+
+        var str="";
+  str += "<div' class=\"chat-msg-i "+$row+"\">";
+  str += "          <div"+$row+">";
+      var $row = $('<li>', { class:"list-group-item", style:"background-color:white;border-bottom-left-radius: 24px;border-bottom-right-radius: 24px;border-top-left-radius: 0rem;border-top-right-radius:24px;margin-left: 1rem;position: relative;max-width: fit-content;"});
+      
+            $chatlog.append(str);
+
+
+$row.text("For creation, Fill out this details.");
+
+
+ var $mapCase = $('<form>',          {action:"/what_premium/", id:"newform",class:"list-group-item",style:"background-color:white;    max-width: 90%; border-radius: 21px;"});
+
+
+
+      var $row = $('<div>',          { id:"newform"});
+
+
+
+        var $form = $("<div>", { class:"row"}
+          )
+        $form.append('{% csrf_token %}');
+
+
+       var $text1 =$("<div>",
+        { class:"col-md-3"  })
+
+$form.append($text1)
+
+
+       var $text =$("<div>",
+        {text:"Premium calculation" , class:"col-md-6" , style:"margin-top: 5px;border-radius: 23px;margin-bottom: 12px;font-size: x-large;background: whitesmoke;text-align: -webkit-center;"})
+
+$form.append($text)
+
+
+        var $row_policy = $("<div>", 
+       {class:"row input_div",style:"margin-left:1rem"})
+
+
+        var $input_policy = $("<div>", 
+       {class:"group col-md-6 input_div",style:"margin-top:24px",text:"Registration Number"})
+
+        var $input_policy_i = $("<input>", 
+       {id:"reg_number", name:"reg_number",placeholder11:"Registration Number"}
+          )
+  
+        var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+
+
+$row_policy.append($input_policy)
+
+
+
+
+
+
+        var $input_veh_i  =     $("<div>", 
+       { class:"col-md-6 input_div form-group row ", text:"Do you want to access an existing policy ?"})
+        
+
+        var $input_veh  =     $("<div>", 
+       {name:"old_policy",style:"margin-left:1px;",required:"true", class:"row"})
+        
+        var $input_radio = $("<label>",{ class:"radio col-md-6",style:"font-size:inherit;",text:"Yes"})
+        var $input_radio1 = $("<input>",{ type:"radio", value:"true", checked:"checked", name:"old_policy", id:"old_policy"})
+        var $input_radio2 = $("<span>",{style:"left:-7px",class:"checkround"})
+
+        var $input_radio_i = $("<label>",{ class:"radio col-md-6" ,style:"font-size:inherit;", text:"No"})
+        var $input_radio_i1 = $("<input>",{ type:"radio",value:"false", name:"old_policy", id:"old_policy"})
+        var $input_radio_i2 = $("<span>",{ style:"left:-7px", class:"checkround"})
+
+
+
+$input_radio.append($input_radio1)
+$input_radio.append($input_radio2)
+
+$input_radio_i.append($input_radio_i1)
+$input_radio_i.append($input_radio_i2)
+
+$input_veh.append($input_radio)
+$input_veh.append($input_radio_i)
+
+$input_veh_i.append($input_veh)
+
+$row_policy.append($input_veh_i)
+$form.append($row_policy)
+
+
+
+
+
+        var $input_state = $("<div>", 
+       {class:"col-md-6 input_div form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"State" ,style:"display:none;margin-top:24px;font-weight:500!important "})
+
+        var $input_state_i = $("<input>", 
+       {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;display:none; color:#0a293e;border-radius:1.25rem;width:20rem", 
+
+       id:"state", name:"state" ,placeholder11:"State" }
+          )
+
+$input_state.append($input_state_i)
+$row_policy.append($input_state)
+
+
+
+
+        var $row_policy = $("<div>", 
+       {class:"row input_div",style:"margin-left:3rem"})
+
+
+        var $input_reg  =     $("<div>", 
+       { class:"col-md-6 input_div form-group row font-weight-bold",style:"font-weight:500!important", text:"Current registration type"})
+        
+        var $input_radio = $("<label>",{ class:"radio", value:"true",style:"font-size:inherit;margin-right:1rem;", text:"Individual"})
+        var $input_radio1 = $("<input>",{ type:"radio", value:"INDIVIDUAL", checked:"checked", name:"radio1", id:"radio1"})
+        var $input_radio2 = $("<span>",{class:"checkround"})
+
+
+        var $input_radio_i = $("<label>",{ class:"radio" ,style:"font-size:inherit;", text:"Corporate"})
+        var $input_radio_i1 = $("<input>",{ type:"radio",value:"Corporate", name:"radio1", id:"radio1"})
+        var $input_radio_i2 = $("<span>",{  class:"checkround"})
+
+
+$input_radio.append($input_radio1)
+$input_radio.append($input_radio2)
+
+$input_radio_i.append($input_radio_i1)
+$input_radio_i.append($input_radio_i2)
+
+$input_reg.append($input_radio)
+$input_reg.append($input_radio_i)
+
+$row_policy.append($input_reg)
+
+
+    var $input_reg_date1  =     $("<div>", 
+       { class:"col-md-6 input_div group",style:"font-weight:500!important",text:"Purchase Date"})
+
+        var $input_reg_date_i1 = $("<input>", 
+       {type:"date" ,id:"reg_date", name:"reg_date" ,placeholder11:"First Registration Date" ,required:"true" }
+          )
+         
+                    var $new_date = $("<input>", 
+       { class:"form-control ", type:"text", id:"new_date", name:"new_date" ,placeholder11:"preent new_date" ,style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; display:none;background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",  }
+          )
+
+  var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+        
+$input_reg_date1.append($new_date)
+
+$input_reg_date1.append($input_reg_date_i1)
+$input_reg_date1.append($input_policy_s1)
+$row_policy.append($input_reg_date1)
+$form.append($row_policy)
+
+
+        var $row_policy = $("<div>", 
+       {class:"row input_div",style:"margin-left:1rem"})
+
+
+        var $input_location  =     $("<div>", 
+       { class:"col-md-6 input_div group" ,text:"RTO Location"})
+
+        var $input_location_i = $("<input>", 
+       { autocomplete:"off",  type:"text" , value:"", id:"location", name:"location" ,placeholder11:"RTO Location" ,required:"true", onfocus:"rto_suggestions();"}
+          )
+
+      var $input_locationc_i = $("<input>", 
+       { autocomplete:"off", type:"text", id:"rto_code", name:"rto_code" ,placeholder11:"RTO Location Code" ,style:"display:none;  " }
+          )          
+
+
+      var $input_locationcc_i = $("<input>", 
+       {autocomplete:"off", type:"text", id:"rto_city_code", name:"rto_city_code" ,placeholder11:"RTO Location Code" ,style:"display:none; ",  }
+          )          
+
+
+      var $input_locationsc_i = $("<input>", 
+       {autocomplete:"off", type:"text", id:"rto_state_code", name:"rto_state_code" ,placeholder11:"RTO Location Code" ,style:"display:none;  ",  }
+          )          
+
+
+  var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+
+
+$input_location.append($input_location_i)
+$input_location.append($input_locationc_i)
+$input_location.append($input_locationcc_i)
+$input_location.append($input_locationsc_i)
+$input_location.append($input_policy_s1)
+$row_policy.append($input_location)
+
+
+
+        var $input_model  =     $("<div>", 
+       { class:"col-md-6 input_div group",text:"Two wheeler Model"})
+
+        var $input_model_i = $("<input>", 
+       {  autocomplete:"off",  id:"model", name:"model" ,type:"text",placeholder11:"Two wheeler Model" ,required:"true", onfocus:"model_suggestions();"}
+          )
+
+  var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+
+$input_model.append($input_model_i);
+$input_model.append($input_policy_s1)
+
+$row_policy.append($input_model)
+$form.append($row_policy)
+
+
+
+        var $input_modelc  =     $("<div>", 
+       { class:"col-md-6 input_div group", autocomplete:"off", style:"display:none;"})
+
+          var $input_modelc_i = $("<input>", 
+       {  id:"modelc", name:"modelc" , autocomplete:"off", placeholder1:"Two wheeler Model code" ,style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem"}
+          )
+
+  var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+
+$input_modelc .append($input_modelc_i);
+$input_modelc.append($input_policy_s1)
+
+$form.append($input_modelc)
+
+
+        var $row_policy = $("<div>", 
+       {class:"row",style:"margin-left:7px"})
+
+        var $input_make  =     $("<div>", 
+       { class:"col-md-6 input_div group",text:"Two wheeler Make"})
+
+        var $input_make_i = $("<input>", 
+       { autocomplete:"off",  id:"make", name:"make" ,type:"text",placeholder1:"Two wheeler Make" ,required:"true", onfocus:"make_suggestions();"}
+          )
+
+  var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+
+       $input_make .append($input_make_i);
+
+$input_make.append($input_policy_s1)
+
+$row_policy.append($input_make)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var $input_makec  =     $("<div>", 
+       { class:"col-md-6 input_div form-group font-weight-bold", autocomplete:"off", style:"margin-top:24px;font-weight:500!important font-weight-bold",style:" font-weight:500!important; display:none;",text:"Two Wheeler make code"})
+
+          var $input_makec_i = $("<input>", 
+       { class:"form-control  ", value:"31", id:"makec", name:"makec" , autocomplete:"off", placeholder1:"Two wheeler Make code" ,style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem"}
+          )
+       
+       $input_makec .append($input_makec_i);
+       $form.append($input_makec)
+
+
+
+
+
+
+
+
+
+        var $input_price  =     $("<div>", 
+       { class:"col-md-6 input_div group",text:"Ex-showroom price"})
+
+        var $input_price_i = $("<input>", 
+       { autocomplete:"off",  type:"text" ,id:"price", name:"price" ,placeholder1:"Ex-showroom price" ,required:"true"}
+          )
+
+  var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+
+$input_price.append($input_price_i)
+$input_price.append($input_policy_s1)
+
+
+
+$row_policy.append($input_price)
+
+$form.append($row_policy)
+
+
+
+
+
+
+
+
+
+        var $input_number  =     $("<div>", 
+       { class:"col-md-6 input_div group",text:"Mobile number"})
+
+        var $input_number_i = $("<input>", 
+       { type:"number" ,default:"99999", value:"", id:"number", name:"number" ,placeholder1:"Mobile number"}
+          )
+
+  var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+
+$input_number.append($input_number_i)
+$input_number.append($input_policy_s1)
+
+$form.append($input_number)
+
+
+        var $input_email  =     $("<div>", 
+       { class:"col-md-6 input_div group",text:"Email"})
+
+        var $input_email_i = $("<input>", 
+       { type:"email" ,default:"s@k.c", id:"email", name:"email" ,placeholder1:"Email"}
+          )
+
+  var $input_policy_s1 = $("<span>", 
+       { class:"bar"})
+
+$input_email.append($input_email_i)
+
+$input_number.append($input_policy_s1)
+$form.append($input_email)
+
+
+        var $input_submit  =     $("<div>", 
+       { class:"col-md-12 form-group"})
+
+        var $input_submit_i = $("<button>", 
+       { class:" btn btn-outline-success", type:'submit', text:"Submit", style:"margin-top: 14px;width: 21rem;border-radius: 3rem;margin-left:2rem;"
+       }
+)
+
+
+$input_submit.append($input_submit_i)
+$form.append($input_submit)
+
+
+      $row.append($form);
+      $mapCase.append($row);
+      $chatlog.append($mapCase);
+}
+createRow("text") ;
+</script>
+
+
+<script>
+
+
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+      b.setAttribute("onclick", "exprice_of_"+this.name+"('"+arr[i]+"');");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'"+ "onclick=exprice_of_"+this.name+"('"+arr[i]+"');"+">";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+
+
+function make_suggestions(){
+
+
+var make_input = document.getElementById("make");
+
+var inputData = make_input.value;
+
+        var inputDataObj = {
+          'text': inputData
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/makes/",
+          data: JSON.stringify(inputDataObj),
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            console.log("makes: "+statement.makes)
+            // Clear the input field
+           
+            
+            autocomplete(make_input, statement.makes);
+
+            // Scroll to the bottom of the chat interface
+        });
+
+}
+
+
+function model_suggestions(){
+
+
+var model_input = document.getElementById("model");
+
+var inputData = model_input.value;
+
+
+        var inputDataObj = {
+          'text': inputData
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/models/",
+          data: JSON.stringify(inputDataObj),
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            console.log("models: "+statement.models)
+            // Clear the input field
+           
+            
+            autocomplete(model_input, statement.models);
+
+            // Scroll to the bottom of the chat interface
+        });
+
+
+}
+
+
+function ShowQuote1(){
+
+        var inputDataObj = {
+             'old_policy' : document.getElementById("old_policy").value,
+            "price": document.getElementById("price").value,
+            "radio1": document.getElementById("radio1").value,
+            "rto_code": document.getElementById("rto_code").value,
+            "rto_state_code":document.getElementById("rto_state_code").value,
+            "rto_city_code":document.getElementById("rto_city_code").value,
+            "new_date": document.getElementById("new_date").value,
+            "modelc": document.getElementById("modelc").value,
+            "reg_number":document.getElementById("reg_number").value,
+            "reg_date": document.getElementById("reg_date").value,
+            "email":document.getElementById("email").value,
+            "number":document.getElementById("number").value,
+        }
+
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/quote/",
+          data: {data: JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+
+
+        $submit.done(function(statement) {
+p=statement;
+
+
+
+
+var result = "The response is as follows: \n";
+for (var key in p) {
+    if (p.hasOwnProperty(key)) {
+        resul =key + " = " + p[key] +", \n";
+        result = result.concat(resul);
+    }
+}
+      var $chatlog = $('.js-chat_log');
+        var $row1 = $('<div>', {  style:"background-color:white;"});
+      $para = $("<pre>");
+      $para.append(result);
+        $row1.append($para);
+
+      $chatlog.append($row1);
+            // Scroll to the bottom of the chat interface
+
+  $('#myModal').append($row1);
+
+$('#Recieved').append($row1);
+
+
+
+
+
+
+
+
+
+        });
+}
+
+
+
+
+function rto_suggestions(){
+
+
+var model_input = document.getElementById("location");
+
+var inputData = model_input.value;
+
+var inputDataObj = {
+  'text': inputData
+}
+
+var $submit = $.ajax({
+  type: 'GET',
+  url:"/rtos/",
+  data: JSON.stringify(inputDataObj),
+  contentType: 'application/json'
+});
+
+$submit.done(function(statement) {
+
+    console.log("rtos: "+statement.rtos)
+    // Clear the input field
+    
+var model_input = document.getElementById("location");
+    autocomplete(model_input, statement.rtos);
+
+    // Scroll to the bottom of the chat interface
+});
+
+
+}
+
+function exprice_of_model(value) {
+
+var inputDataObj = {
+  'make': value
+}
+
+var $submit = $.ajax({
+  type: 'GET',
+  url:"/exprice_of/",
+  data: {data: JSON.stringify(inputDataObj)},
+  contentType: 'application/json'
+});
+
+
+$submit.done(function(statement) {
+
+    
+     model_input = document.getElementById("model");
+     model_input.value = statement.model;
+     model_input = document.getElementById("make");
+     model_input.value = statement.make;
+     model_input = document.getElementById("modelc");
+     model_input.value = statement.makec;
+     model_input = document.getElementById("makec");
+     model_input.value = statement.modelc;
+     model_input = document.getElementById("price");
+    model_input.value = statement.exprice;
+
+  var model_input = document.getElementById("reg_date");
+
+
+  d = new Date().toLocaleDateString('en-GB', {  
+day : 'numeric',
+month : 'numeric',
+year : 'numeric'
+});
+document.getElementById("new_date").value = d;
+  
+
+
+
+});
+
+};
+
+function exprice_of_make(value) {
+
+
+console.log(value);
+
+
+};
+
+function exprice_of_location(value) {
+
+
+var inputDataObj = {
+  'make': value
+}
+
+var $submit = $.ajax({
+  type: 'GET',
+  url:"/loct_code_of/",
+  data: {data: JSON.stringify(inputDataObj)},
+  contentType: 'application/json'
+});
+
+
+$submit.done(function(statement) {
+
+    
+    var model_input = document.getElementById("rto_code");
+    model_input.value = statement.loct_code;
+    var model_input1 = document.getElementById("rto_state_code");
+    model_input1.value = statement.state_code;
+    var model_input2 = document.getElementById("rto_city_code");
+    model_input2.value = statement.city_code;
+    console.log(statement.city_code);
+
+    
+  
+
+});
+
+
+
+};
+
+</script>
+</body>
+
+</html>
+
+

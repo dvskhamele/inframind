@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111"><link rel="canonical" href="https://codepen.io/rajrs/pen/dMowNx">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<style type="text/css">
+  label{
+    font-weight:500;
+  }
+
+.col-md-4{
+  width:17.333333%;
+  max-width: 100%;
+}
+
+.col-md-8{
+  width:42.666667%;
+  min-width:max-content;
+}
+
+.form-horizontal .control-label {
+  text-align:-webkit-left;
+  min-width:max-content;
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+  <h1>Form</h1>
+
+{% if response %}
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Premium Calculation</h4>
+      </div>
+      <div class="modal-body">
+        <h3> Sent Parameters </h3>
+          {% for r,s in requested.items %} 
+
+        <p>{{ r }} - {{ s }} .</p>
+        {% endfor %}
+
+<br>
+<br>
+
+        <h3> Response </h3>
+          {% for r,s in got_parameters.items %} 
+
+        <p>{{ r }} - {{ s }} .</p>
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <form >
+
+
+
+
+   
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Go for Proposal</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+       <table class="table table-striped">
+
+          <tbody>
+             <tr>
+                <td colspan="1">
+                  <form action="/what_proposal/"
+                   class="well form-horizontal" method="GET">
+                    {% csrf_token %}
+                      <fieldset>
+      
+                        
+
+
+
+
+                         {% for r,s in requested.items %} 
+                         
+
+                         <div class="form-group" style="display:none;" >
+                                                     <label class="col-md-4 control-label">{{ r }}</label>
+                          <div class="col-md-8 inputGroupContainer">
+                             <div class="input-group" >
+                              <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-home"></i></span>
+      <input id="{{ r }}" name="{{ r }}" class="form-control" required="true" value="{{ s }}" style="display: none;" type="text" value=""
+      >                                  
+                              </div>
+                          </div>
+                         
+                        </div>
+                                           
+                       {% endfor %}
+               
+               
+                       
+ 
+
+
+               
+               
+                       <div class="form-group">
+                          <label class="col-md-4 control-label">
+                                             Customer Name
+                                            </label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                               <div class="input-group" >
+                                                <span class="input-group-addon">
+                                                  <i class="glyphicon glyphicon-user"></i></span>
+                                                                           <input   class="form-control" name="CustomerName" id="CustomerName" value="{{ s }}">
+                                                                          </div>
+                                                                        </div>
+                                                                        
+                                                                        </div>
+                                                                                       
+                                     
+                                             <div class="form-group">
+                                                <label class="col-md-4 control-label">
+                                                                   Date of Birth
+                                                                  </label>
+                                                                  <div class="col-md-8 inputGroupContainer">
+                                                                     <div class="input-group" >
+                                                                      <span class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-calendar"></i></span>
+                                              <input   class="form-control" name="DateOfBirth" id="DateOfBirth" type="date" style="width:auto;">
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      
+                                                                                      </div>
+                                                                                                     
+                                     
+                                             <div class="form-group">
+                                                <label class="col-md-4 control-label">
+                                                                   Pin code
+                                                                  </label>
+                                                                  <div class="col-md-8 inputGroupContainer">
+                                                                     <div class="input-group" >
+                                                                      <span class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-home"></i></span>
+                      <input   class="form-control" name="PinCode" id="PinCode" value="{{ s }}">
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      
+                                                                                      </div>
+                                     
+                                                                                      <div class="form-group">
+                                                                                          <label class="col-md-4 control-label">
+                                                                                                             Address Line 1
+                                                                                           </label>
+                                                                                            <div class="col-md-8 inputGroupContainer">
+                                                                                             <div class="input-group" >
+                                                                                            <span class="input-group-addon">
+                                                                                          <i class="glyphicon glyphicon-home"></i></span>
+                                                                                        <input   class="form-control" name="AddressLine1" id="AddressLine1" value="{{ s }}">
+                                                                                       </div> </div>  </div>
+                                          
+                                                                                       
+                                                                                                                                               
+                      
+                                             <div class="form-group">
+                                                <label class="col-md-4 control-label">
+                                                                   PAN Card
+                                                                  </label>
+                                                                  <div class="col-md-8 inputGroupContainer">
+                                                                     <div class="input-group" >
+                                                                      <span class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-credit-card"></i></span>
+                                                                                         <input   class="form-control" name="PANCardNo" id="PANCardNo" value="{{ s }}">
+                                             </div> </div>  </div>
+                                     
+
+
+                       <div class="form-group">
+                          <label class="col-md-4 control-label">
+                              Engine Number
+                            </label>
+                          <div class="col-md-8 inputGroupContainer">
+                             <div class="input-group" >
+                              <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-align-left"></i></span>
+      <input 
+      class="form-control"
+      name="EngineNumber" id="EngineNumber" value="{{ EngineNumber  }}"
+
+      >                                  
+                              </div>
+                          </div>
+                         
+                        </div>
+                                           
+
+               
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                         Chassis Number	
+                        </label>
+                        <div class="col-md-8 inputGroupContainer">
+                           <div class="input-group" >
+                            <span class="input-group-addon">
+                              <i class="glyphicon glyphicon-align-left"></i></span>
+    <input   class="form-control" 
+
+name="ChassisNumber" id="ChassisNumber" value="{{ ChassisNumber  }}">
+</div>
+</div>
+
+</div>
+                 
+
+
+
+               
+<div class="form-group">
+    <label class="col-md-4 control-label">
+Vehicle Description	
+</label>
+<div class="col-md-8 inputGroupContainer">
+   <div class="input-group" >
+    <span class="input-group-addon">
+      <i class="glyphicon glyphicon-align-justify"></i></span>
+<input   class="form-control" 
+
+name="VehicleDescription" id="VehicleDescription" value="test vehicle">
+</div>
+</div>
+
+</div>
+                 
+               
+               
+               
+                        
+                     
+                       <div class="form-group">
+                          <label class="col-md-4 control-label">
+                       Constitution of Business
+                      </label>
+                      <div class="col-md-8 inputGroupContainer">
+                         <div class="input-group" >
+                          <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-home"></i></span>
+                      
+                               <input   class="form-control" name="ConstitutionOfBusiness" id="ConstitutionOfBusiness" 
+                               value="Proprietorship">
+                       </div> </div>  </div>
+               
+               
+               
+               
+               
+               
+                       <div class="form-group" style="display: none;">
+                          <label class="col-md-4 control-label">
+                       PAN Details
+                      </label>
+                      <div class="col-md-8 inputGroupContainer">
+                         <div class="input-group" >
+                          <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-align-left"></i></span>
+                      
+                       <input   class="form-control" name="PanDetails" id="PanDetails" value="P">
+                       </div> </div>  </div>
+               
+                       
+               
+               
+                       <div class="form-group">
+                          <label class="col-md-4 control-label">
+                       GST Registration Status
+                      </label>
+                      <div class="col-md-8 inputGroupContainer">
+                         <div class="input-group" >
+                          <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-align-left"></i></span>
+                      
+                       <input   class="form-control" name="GSTRegistrationStatus" id="GSTRegistrationStatus" value="To be Commenced">
+                       </div> </div>  </div>
+
+
+                                      
+               
+                       <div class="form-group">
+                          <label class="col-md-4 control-label">
+
+                       GSTin Number
+                      </label>
+                      <div class="col-md-8 inputGroupContainer">
+                         <div class="input-group" >
+                          <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-align-left"></i></span>
+                      
+                       <input   class="form-control" name="GSTInNumber" id="GSTInNumber" value="{{ s }}">
+                       </div> </div>  </div>
+               
+               
+                       <div class="form-group">
+                          <label class="col-md-4 control-label">
+
+                       GST Customer Type
+                      </label>
+
+
+
+
+
+
+                        
+                        
+                        <div class="col-md-8 inputGroupContainer">
+                         <div class="input-group" >
+                          <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-align-left"></i></span>
+                      
+                            <select class="form-control" id="GSTCustomerType" name="GSTCustomerType">
+                                <option value="GENERAL">GENERAL</option>
+                                <option value="EOU/STP/EHTP">EOU/STP/EHTP</option>
+                                <option value="GOVERNMENT">GOVERNMENT</option>
+                                <option value="OVERSEAS">OVERSEAS</option>
+                                <option value="RELATED PARTIES">RELATED PARTIES</option>
+                                <option value="SEZ">SEZ</option>
+                                <option value="Individual">Individual</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="OTHERS">OTHERS</option>
+                                
+                                
+                              </select>
+
+
+                      </div> </div>  </div>
+               
+               
+                       <button type="submit" class="btn btn-primary mb-2 btn-block" style="color:#191ed8;background-color:#e1e3eb;width:10%;">Submit</button>
+                       </fieldset>
+
+
+
+                   </form>
+                </td>
+             </tr>
+          </tbody>
+       </table>
+    </div>
+
+<script type="text/javascript">
+ $(window).load(function(){        
+   $('#myModal').modal('show');
+    }); 
+</script>
+</body>
+
+</html>
+
+

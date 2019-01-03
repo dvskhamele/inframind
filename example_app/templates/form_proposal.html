@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111"><link rel="canonical" href="https://codepen.io/rajrs/pen/dMowNx">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<style type="text/css">
+  label{
+    font-weight:500;
+  }
+
+</style>
+
+</head>
+
+<body>
+<div class="container">
+  <h1>Form</h1>
+
+{% if response %}
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Premium Proposal Creation</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Sent Parameters</h3>
+          {% for r,s in requested.items %} 
+
+        <p>{{ r }} - {{ s }} .</p>
+        {% endfor %}
+
+
+        <hr>
+        <h3>Recieved Response</h3>
+          {% for r,s in response.items %} 
+
+        <p>{{ r }} - {{ s }} .</p>
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <form action="/proposal_creation/">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Done !</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+</head>
+
+<body>
+<div class="container">
+  
+       <table class="table table-striped">
+
+          <tbody>
+             <tr>
+                <td colspan="1">
+                   <form class="well form-horizontal" method="POST">
+                    {% csrf_token %}
+                      <fieldset>
+                        </fieldset>
+                
+                
+                
+                
+                
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label"  >Correlation ID</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+
+                                <input id="correlation_id" name="correlation_id" placeholder="Correlation ID" required="true" class="form-control" value="fe1c499f-0e64-4bdc-93a0-e29f8709a2c2"   type="text">
+
+
+                              </div>
+                            </div>
+                         </div>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Business Type</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group" >
+                                  <span class="input-group-addon" style="max-width: 100 %;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control"    name="business_type" id="business_type" required="true"  onchange="f(); tpt();">
+                                     <option></option>
+                                     <option value="true">New Business</option>
+                                     <option value="false">Rollover </option>
+                                  </select>
+                               </div>
+                            </div>
+                           
+                          </div>
+                          <br>
+                                             
+                         <div class="form-group">
+                            <label class="col-md-4 control-label"  >Deal Id </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="deal_id" name="deal_id" placeholder=" Valid Deal ID" class="form-control"  required="true"  type="text"></div>
+                            </div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Vehical Make code </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="vehical_make_code" name="vehical_make_code" placeholder="Vehical Make Code" class="form-control" required="true"  type="number" min="0" max=""></div>
+                            </div>
+                         
+                            <label class="col-md-4 control-label">Vehical Model Code</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="vehical_model_code" name="vehical_model_code" placeholder="Model code" class="form-control"  required="true"  type="number"  min="0" max=""></div>
+                            </div>
+                         </div>
+                         <br>
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Vehical Description </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="vehical_description" name="vehical_description" placeholder="Vehical Description" class="form-control"   type="text"></div>
+                            </div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">RTO Location Code</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="rto_location_code" name="rto_location_code" placeholder="rto_location_code" class="form-control" required="true"  type="number"  min="0" max=""></div>
+                            </div>
+                         </div>
+                         
+                         
+                         <div class="form-group">
+                            <label class="col-md-4 control-label" >Ex-ShowRoom Price</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span><input value="1" id="ex_showroom_price" name="ex_showroom_price" placeholder="Ex-ShowRoom Price" class="form-control" required="true"   type="number" min="0" max=""></div>
+                            </div>
+                         </div>
+
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Is No Prev Insurance</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100 %;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_no_prev_insurance" name="is_no_prev_insurance" >
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         
+                            <label class="col-md-4 control-label">Tenure</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="tenure" name="tenure" placeholder="Tenure" class="form-control"  value="quantity" type="number" min="1" max=""></div>
+                            </div>
+                         </div>
+                         <br>
+                      
+                   
+                
+                   
+                     
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Manufacturing Year </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input value="1" id="manufacturing_year" name="manufacturing_year" placeholder="Year" class="form-control"  required="true" value="quantity" type="number" min="0" max=""></div>
+                            </div>
+                         
+                         
+
+                         
+                            <label class="col-md-4 control-label" style="padding-left: 15px; padding-right: 0px; ">Delivery Or Registration Date </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="delivery_or_registration_date" name="delivery_or_registration_date" placeholder="Registration Date " class="form-control" required="true"    type="date"></div>
+                            </div>
+                         </div>
+                         <br>
+                            
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">First Registration Date </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="first_registration_date" name="first_registration_date" placeholder="" class="form-control"    type="date"></div>
+                            </div>
+                         
+                            <label class="col-md-4 control-label">Is transfer of NCB</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"   ></i></span>
+                                  <select class="selectpicker form-control" onchange="a(); b(); c(); d(); d(); g();" name="is_transfer_of_ncb" id="is_transfer_of_ncb" >
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         </div>
+                         <br>                         
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Transfer Of NCB Percent </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="transfer_of_ncb_percent" name="transfer_of_ncb_percent" placeholder="Transfer of NCB %" class="form-control"    type="text"></div>
+                            </div>
+                         </div>
+                         
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Bonus On Previous Policy </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="bonus_on_previous_policy" name="bonus_on_previous_policy" placeholder="Bonus on previous policy" class="form-control"    type="number" min="0" max=""></div>
+                            </div>
+                         </div>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label" style="padding-left: 15px; padding-right: 0px; ">Previous Policy start date </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="previous_policy_start_date" name="previous_policy_start_date" placeholder="Previous policy start date " class="form-control"    type="date"></div>
+                            </div>
+                         
+                            <label class="col-md-4 control-label">Previous Policy End date</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="previous_policy_end_date" name="previous_policy_end_date" placeholder="" class="form-control"    type="date"></div>
+                            </div>
+                         </div>
+                         <br>
+                         
+                         
+                            <label class="col-md-4 control-label">Previous Policy number </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="previous_policy_number" name="previous_policy_number" placeholder="" class="form-control"   type="text"></div>
+                            </div>
+                         </div>
+                         <br>
+
+<!--
+                          <div class="form-group">
+                          
+                            <label class="col-md-4 control-label">Previous policy sale date</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="previous_policy_sale_date" name="previous_policy_sale_date" placeholder="" class="form-control"   type="text"></div>
+                            </div>
+                         </div>
+                         <br>
+-->
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Claim on Previous Policy </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"  ></i></span>
+                                  <select class="selectpicker form-control" id="claim_on_previous_policy" name="claim_on_previous_policy">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         
+                            <label class="col-md-4 control-label">Total No Of OD claims</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="total_no_of_od_claims" name="total_no_of_od_claims" placeholder="No.of ODI claims" class="form-control"   type="number"></div>
+                            </div>
+                         </div>
+                         <br>
+                      
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Previous Policy type </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"  ></i></span>
+                                  <select class="selectpicker form-control" id="previous_policy_type" name="previous_policy_type">
+                                     <option>Comprehensive packge</option>
+                                     <option>TP</option>
+                                  </select>
+                               </div>
+                           </div>
+                            </div>
+
+                          <div class="form-group">
+                          
+                            <label class="col-md-4 control-label">Previous Insurance Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="previous_insurance_name" name="previous_insurance_name" placeholder="" class="form-control"   type="text"></div>
+                            </div>
+                         </div>
+                         <br>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label" ">Previous vehical Sale Date  </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="previous_vehical_sale_date" name="previous_vehical_sale_date"  placeholder="" class="form-control"   type="date"></div>
+                            </div>
+                        
+
+                            <label class="col-md-4 control-label">Previous Policy Tenure</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="previous_policy_tenure" name="previous_policy_tenure" placeholder="" class="form-control"   type="number"></div>
+                            </div>
+
+                         </div>
+                          <br>                        
+                         <br>                        
+                         
+                         <div class="form-group">
+                            <label class="col-md-4 control-label ">Policy Start date</label> 
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="policy_start_date" name="policy_start_date" placeholder="Registration Date " class="form-control"   required="true"  type="date"></div>
+                           </div>
+                         </div>
+                                     <div class="form-group">                 
+                            <label class="col-md-4 control-label">Policy end date </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input value="1" id="policy_end_date" name="policy_end_date" placeholder="" class="form-control"  required="true"   type="date"></div>
+                            </div>
+                         </div>
+                         
+                         <br>  
+                         <br>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Customer Type</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="customer_type" name="customer_type" required="true">
+                                     <option>INDIVIDUAL</option>
+                                     <option>CORPORATE</option>
+                                  </select>
+                               </div>
+                            </div>
+                          </div>
+<div class="form-group">
+                            <label class="col-md-4 control-label">is  Have electrical Accessories</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_have_electrical_accessories" name="is_have_electrical_accessories" onchange="h()">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                            
+                            
+
+                         </div>
+                         <br>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">SI have electrical Accessories</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="si_have_electrical_accessories" name="si_have_electrical_accessories" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+
+                       <div class="form-group">
+                            <label class="col-md-4 control-label">Is have non electrical Accessories </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_have_no_electrical_accessories" name="is_have_non_electrical_accessories" onchange="i()">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                            
+                         </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">SI have non electrical Accessories</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="si_have_non_electrical_accessories" name="si_have_non_electrical_accessories" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">TPPD Limit</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="tppd_limit" name="tppd_limit" placeholder="" class="form-control"   type="number" min="0" max="" ></div>
+                            </div>
+                          </div>
+                          <br>
+
+                       <div class="form-group">
+                            <label class="col-md-4 control-label">Is legal Liability To paid Driver </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_legal_liability_to_paid_driver" name="is_legal_liability_to_paid_driver" onchange="j()">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         
+                            <label class="col-md-4 control-label">Is legal Liability to paid Empolyee </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_legal_liability_to_paid_empolyee" name="is_legal_liability_to_paid_empolyee">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         </div>
+                         <br>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">No Of Empolyee</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="no_of_empolyee" name="no_of_empolyee" placeholder="" class="form-control"   type="number" ></div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="col-md-4 control-label">Is PA cover Unnamed passenger 
+                            </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_pa_cover_unnamed_passenger" name="is_pa_cover_unnamed_passenger" onchange="k()">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         </div>
+                         <br>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">SIPA cover unnamed passenger</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="sipa_cover_unnamed_passenger" name="sipa_cover_unnamed_passenger" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                             <label class="col-md-4 control-label"> Is valid driving licence</label> 
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_valid_driving_licence"
+                                  name="is_valid_driving_licence">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                            
+                         </div>
+                         <br>
+
+
+                       <div class="form-group">
+                            <label class="col-md-4 control-label">Is more than one vehical
+                            </label>
+                         
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_more_than_one_vehical" name="is_more_than_one_vehical" onchange="l()">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="col-md-4 control-label">Is PA cover Owner Driver </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_pa_cover_owner_driver" name="is_pa_cover_owner_driver">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                            
+                         </div>
+                         <br>
+
+                       <div class="form-group">
+                            <label class="col-md-4 control-label">Is voluntary deductible </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_voluntary_deductible" name="is_voluntary_deductible" onchange="m()">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Voluntry Deductible plan name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="voluntry_deductible_plan_name" name="voluntry_deductible_plan_name" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+                          <br>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Is automobile assocn Flag</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_automobile_assocn_flag" name="is_automobile_assocn_flag">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                          </div>
+<div class="form-group">
+                            <label class="col-md-4 control-label">Automobile association number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="automobile_association_number" name="automobile_association_number" placeholder="" class="form-control"   type="number" ></div>
+                            </div>
+                          </div>
+                          <br>
+
+
+                            <br>
+
+                            <div class="form-group">
+                            <label class="col-md-4 control-label">Is anti theft disk</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_anti_theft_disk" name="is_anti_theft_disk">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                            <label class="col-md-4 control-label">Is handicap disk</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_handicap_disk" name="is_handicap_disk">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         </div>
+                         <br>
+                         <div class="form-group" >
+                            <label class="col-md-4 control-label"> Is Extension Country</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_extension_country" name="is_extension_country" onchange="n()">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                            
+                         </div>
+                         <br>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Extension country name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="extension_country_name" name="extension_country_name" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+                          <br>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Zero Dep Plan Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="zero_dep_plan_name" name="zero_dep_plan_name" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+                          <br>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label"> Is RTI Applicable flag</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="is_rti_applicable_flag" name="is_rti_applicable_flag">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                             </div> 
+                             <br>
+                             <br>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">RSA Plan Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="rsa_plan_name" name="rsa_plan_name" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Other Loading </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="other_loading" name="other_loading" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Other Discount</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="other_discount" name="other_discount" placeholder="" class="form-control"   type="number" ></div>
+                            </div>
+                          </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">engine number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="engine_number" name="engine_number"   placeholder="" class="form-control" required="true"  type="text" ></div>
+                            </div>
+                          </div>
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Chassis  number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="chassis_number" name="chassis_number"   placeholder="" class="form-control" required="true"  type="text" ></div>
+                            </div>
+                          </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Registration number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="registration_number" name="registration_number" placeholder="" class="form-control" required="true"   type="text" ></div>
+                            </div>
+                          </div>
+
+                      </fieldset>
+                      <br><br>
+
+                      <fieldset>
+                        <legend >Nominee Details</legend>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name of Nominee</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="name_of_nominee" name="name_of_nominee" placeholder=" Name of Nominee" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">AGE</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="age" name="age" placeholder="" class="form-control"   type="number" ></div>
+                            </div>
+                         </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Nominee Type</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="nominee_type" name="nominee_type" placeholder="" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+  
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Relationship</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="relationship" name="relationship" placeholder="Relationship" class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+                      </fieldset>
+                      <br>
+                      <br>
+
+                      <fieldset>
+                        <legend  >Customer Detail</legend>
+                          <br>
+                          <br>
+    
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Customer Types</label>
+                            <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="customer_types" name="customer_types" required="true" >
+                                     <option>INDIVIDUAL</option>
+                                     <option>COMPANY</option>
+                                  </select>
+                               </div>
+                            </div>
+                            
+                          </div>
+                          <br>
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Customer Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="customer_name" name="customer_name" placeholder=Name"" class="form-control" required="true"  type="text"  ></div>
+                            </div>
+                          </div>
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Date of birth</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="date_of_birth" name="date_of_birth" placeholder="" class="form-control"   type="date" ></div>
+                            </div>
+                          </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Pin code</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="pin_code" name="pin_code" placeholder="" class="form-control"    required="true" type="text"  ></div>
+                            </div>
+                          </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">PAN card number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="pan_card_number" name="pan_card_number" placeholder="PAN NO." class="form-control"   type="text" ></div>
+                            </div>
+                          </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Email</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="email" name="email" placeholder="Email" class="form-control"   type="email"  required="true" ></div>
+                            </div>
+                          </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Mobile Number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="mobile_number" name="mobile_number" placeholder="Mobile Number" class="form-control"   type="number" ></div>
+                            </div>
+                          </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Address Line 1</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="address_line_1" name="address_line_1" placeholder="Address Line 1" class="form-control"   type="text" required="true" ></div>
+                            </div>
+                          </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Country code</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="country_code" name="country_code" placeholder="" class="form-control"   type="number" required="true" ></div>
+                            </div>
+                          </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">State Code</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="state_code" name="state_code" placeholder="" class="form-control"   required="true" type="number"  ></div>
+                            </div>
+                          </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">city code</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="city_code" name="city_code" placeholder="" class="form-control"   type="number" required="true" ></div>
+                            </div>
+                          </div>
+
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Gender</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" ><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="gender" name="gender" >
+                                     <option value="true">MALE</option>
+                                     <option value="false">FEMALE</option>
+                                  </select>
+                               </div>
+                            </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Mobile ISD</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="mobile_isd" name="mobile_isd" placeholder="Mobile ISD" class="form-control"  value="+91" type="text" >
+                               </div>
+                            </div>
+                          </div>
+
+                          <br><br>
+                          <legend >GST Detail</legend>
+                          <br><br>
+
+                       <div class="form-group">
+                            <label class="col-md-4 control-label">Gst Exemption Applicable </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="gst_exemption_applicable" name="gst_exemption_applicable" onchange="o(); p(); q(); r();s(); t(); ">
+                                     <option value="true">Yes</option>
+                                     <option value="false">No</option>
+                                  </select>
+                               </div>
+                            </div>
+                         </div>
+
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">GST In Number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="gst_in_number" name="gst_in_number" placeholder="gst in number" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">GSTTo State</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="gstto_state" name="gstto_state" placeholder="GSTTo No." class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">Constituation of business</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="constituation_of_business" name="constituation_of_business" placeholder="constituation of business" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+                          <br>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label"> Customer Type</label>
+                            <div class="col-md-7 inputGroupContainer">
+                               <div class="input-group">
+                                  <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                  <select class="selectpicker form-control" id="gcustomer_type" name="gcustomer_type">
+                                     <option>INDIVIDUAL</option>
+                                     <option>COMPANY</option>
+                                  </select>
+                               </div>
+                            </div>
+                            
+                          </div>
+                          <br>
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">Pan detail</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="pan_detail" name="pan_detail" placeholder="Pan Detail" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">GST Registration Status</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="gst_registration_status" name="gst_registration_status" placeholder="Status" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+                          <br><br>
+
+
+                          <legend >Financer Details</legend>
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">Financier Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="financier_name" name="financier_name" placeholder="Financier Name" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">Brand Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="brand_name" name="brand_name" placeholder="Brand Name" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">Agreement Type</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="agreement_type" name="agreement_type" placeholder="Agreement Type" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+
+
+                          <legend >SP Details</legend>
+
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">SP Code</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="sp_code" name="sp_code" placeholder="SP Code" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">SP Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="sp_name" name="sp_name" placeholder=" SP Name" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">Customer reference number</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="customer_refernce_number" name="customer_refernce_number" placeholder="Customer reference number" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">Channel Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="channel_name" name="channel_name" placeholder="Channel Name" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+
+                     <div class="form-group">
+                            <label class="col-md-4 control-label">Channel IRMEMPID</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="channel_irmempid" name="channel_irmempid" placeholder="Channel IRMEMPID" class="form-control"   type="text" >
+                               </div>
+                            </div>
+                          </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">TPT Tenure</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input value="1" id="tpt_tenure" name="tpt_tenure" placeholder="" class="form-control" required="true"  type="number"></div>
+                            </div>
+                          </div>
+
+
+                      </fieldset>
+                      <br>
+
+                    
+                     
+                      <button type="submit" class="btn btn-primary mb-2 btn-block">Submit</button>
+                   </form>
+                </td>
+             </tr>
+          </tbody>
+       </table>
+    </div>
+
+    <script type="text/javascript">
+ $(window).load(function(){        
+   $('#myModal').modal('show');
+    }); 
+</script>
+
+</body>
+
+
+<script type="text/javascript">
+
+{% if response.items.all %}
+confirm("{% for r,s in response %} {{ r }} {{ s }} <br>{% endfor %}")
+{% endif %}
+
+
+
+  function a() {
+  tncb = document.getElementById("is_transfer_of_ncb").value;
+  if(tncb == "true"){
+
+  document.getElementById("transfer_of_ncb_percent").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("transfer_of_ncb_percent").required = false;
+}
+}
+a()
+
+
+  function b() {
+  tncb = document.getElementById("is_transfer_of_ncb").value;
+  if(tncb == "true"){
+
+  document.getElementById("previous_policy_start_date").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("previous_policy_start_date").required = false;
+}
+}
+b()
+
+
+  function c() {
+  tncb = document.getElementById("is_transfer_of_ncb").value;
+  if(tncb == "true"){
+
+  document.getElementById("previous_policy_end_date").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("previous_policy_end_date").required = false;
+}
+}
+c()
+
+
+  function d() {
+  tncb = document.getElementById("is_transfer_of_ncb").value;
+  if(tncb == "true"){
+
+  document.getElementById("claim_on_previous_policy").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("claim_on_previous_policy").required = false;
+}
+}
+d()
+
+
+  function e() {
+  tncb = document.getElementById("is_transfer_of_ncb").value;
+  if(tncb == "true"){
+
+  document.getElementById("previous_policy_type").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("previous_policy_type").required = false;
+}
+}
+e()
+
+
+  function f() {
+  tncb = document.getElementById("business_type").value;
+  if(tncb == "false"){
+
+  document.getElementById("previous_insurance_name").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("previous_insurance_name").required = false;
+}
+}
+f()
+
+  function tpt() {
+  tncb = document.getElementById("business_type").value;
+  if(tncb == "true"){
+
+  document.getElementById("tpt_tenure").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("tpt_tenure").required = false;
+}
+}
+tpt()
+
+
+  function g() {
+  tncb = document.getElementById("is_transfer_of_ncb").value;
+  if(tncb == "true"){
+
+  document.getElementById("previous_vehical_sale_date").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("previous_vehical_sale_date").required = false;
+}
+}
+g()
+
+
+  function h() {
+  tncb = document.getElementById("is_have_electrical_accessories").value;
+  if(tncb == "true"){
+
+  document.getElementById("si_have_electrical_accessories").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("si_have_electrical_accessories").required = false;
+}
+}
+h()
+
+
+  function i() {
+  tncb = document.getElementById("is_have_non_electrical_accessories").value;
+  if(tncb == "true"){
+
+  document.getElementById("si_have_non_electrical_accessories").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("si_have_non_electrical_accessories").required = false;
+}
+}
+i()
+
+
+  function j() {
+  tncb = document.getElementById("is_legal_liability_to_paid_empolyee").value;
+  if(tncb == "true"){
+
+  document.getElementById("no_of_empolyee").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("no_of_empolyee").required = false;
+}
+}
+j()
+
+
+  function k() {
+  tncb = document.getElementById("is_pa_cover_unnamed_passenger").value;
+  if(tncb == "true"){
+
+  document.getElementById("sipa_cover_unnamed_passenger").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("sipa_cover_unnamed_passenger").required = false;
+}
+}
+k()
+
+
+  function l() {
+  tncb = document.getElementById("is_more_than_one_vehical").value;
+  if(tncb == "true"){
+
+  document.getElementById("is_valid_driving_licence").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("is_valid_driving_licence").required = false;
+}
+}
+l()
+
+  function m() {
+  tncb = document.getElementById("is_voluntary_deductible").value;
+  if(tncb == "true"){
+
+  document.getElementById("voluntry_deductible_plan_name").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("voluntry_deductible_plan_name").required = false;
+}
+}
+m()
+
+
+  function n() {
+  tncb = document.getElementById("is_extension_country").value;
+  if(tncb == "true"){
+
+  document.getElementById("extension_country_name").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("extension_country_name").required = false;
+}
+}
+n()
+
+
+
+  function o() {
+  tncb = document.getElementById("gst_exemption_applicable").value;
+  if(tncb == "true"){
+
+  document.getElementById("gst_in_number").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("gst_in_number").required = false;
+}
+}
+o()
+
+  function p() {
+  tncb = document.getElementById("gst_exemption_applicable").value;
+  if(tncb == "true"){
+
+  document.getElementById("gstto_state").required = true;
+
+}else{
+  console.log(tncb,"tncb")
+  document.getElementById("gstto_state").required = false;
+}
+}
+p()
+
+</script>
+
+</html>
+

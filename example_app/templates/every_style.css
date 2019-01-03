@@ -1,0 +1,248 @@
+
+
+
+
+.calendarstyle{
+
+  height: auto;
+  width: auto;
+  background-color:#bdf1ac00;
+
+}
+.garage_select:hover{
+  background-color:#dddddd61;
+}
+
+#calendarHere {
+      position: relative;
+    }
+
+.list-group-item{
+
+    border-bottom-left-radius: 24px;border-bottom-right-radius: 24px;border-top-left-radius: 0rem;border-top-right-radius:24px;margin-left: 9px;position: relative;max-width: fit-content;
+}
+
+
+.chat-msg > .msg-avatar img {
+  
+  height:21px;
+  border-radius:50%;
+  float:right;
+  width:auto;
+}
+
+.chat-msg-i > .msg-avatar img {
+  
+  height:21px;
+  border-radius:50%;
+  float:left;
+  width:auto;
+}
+
+.user-group-item{
+
+    border-bottom-left-radius: 24px;border-bottom-right-radius: 24px;border-top-left-radius: 24px;border-top-right-radius: 0rem;margin-right: 18px;margin-left: auto;position: relative;max-width: fit-content;
+    
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 200px;
+  overflow: scroll;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9; 
+}
+
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+
+
+.radio {
+ 
+     display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+/* Hide the browser's default radio button */
+.radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkround {
+
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff ;
+    border-color:#f8204f;
+    border-style:solid;
+    border-width:2px;
+     border-radius: 50%;
+}
+
+
+/* When the radio button is checked, add a blue background */
+.radio input:checked ~ .checkround {
+    background-color: #fff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkround:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio input:checked ~ .checkround:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio .checkround:after {
+     left: 2px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background:#f8204f;
+    
+ 
+}
+
+.span_pseudo, .chiller_cb span:before, .chiller_cb span:after {
+  content: "";
+  display: inline-block;
+  background: #fff;
+  width: 0;
+  height: 0.2rem;
+  position: absolute;
+  transform-origin: 0% 0%;
+}
+
+.chiller_cb {
+  position: relative;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+.chiller_cb input {
+  display: none;
+}
+.chiller_cb input:checked ~ span {
+  background: #fd2727;
+  border-color: #fd2727;
+}
+.chiller_cb input:checked ~ span:before {
+  width: 1rem;
+  height: 0.15rem;
+  transition: width 0.1s;
+  transition-delay: 0.3s;
+}
+.chiller_cb input:checked ~ span:after {
+  width: 0.4rem;
+  height: 0.15rem;
+  transition: width 0.1s;
+  transition-delay: 0.2s;
+}
+
+.chiller_cb label {
+  padding-left: 2rem;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  margin-bottom:0;
+}
+.chiller_cb span {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #ccc;
+  position: absolute;
+  left: 0;
+  transition: all 0.2s;
+  z-index: 1;
+  box-sizing: content-box;
+}
+.chiller_cb span:before {
+  transform: rotate(-55deg);
+  top: 1rem;
+  left: 0.37rem;
+}
+.chiller_cb span:after {
+  transform: rotate(35deg);
+  bottom: 0.35rem;
+  left: 0.2rem;
+}
+
+
+
+    
+
+    .list-group-item{
+      margin-top:4px;
+    }
+    .user-group-item{
+      margin-top:4px;
+      background-color: white;
+    }
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+            #floating-panel {
+        position: absolute;
+        top: 20px;
+        left: 43%;
+        z-index: 10;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }

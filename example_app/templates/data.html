@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+  #page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
+}
+
+#my-box{
+
+    height: 13rem;
+    max-height: 100%;
+    width: 45rem;
+    box-sizing:border-box;
+    box-shadow:2px 2px 8px;
+    margin-right:10rem;
+}
+
+#my-box:hover{
+  box-shadow: 2px 5px 15px;
+}
+
+#my-detail{
+  margin-block-start: -2rem;
+  margin-left:-1rem;
+}
+
+#my-conversation{
+  text-decoration-style: none;
+  font-size: large;
+}
+
+.avatar{
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+.navbar-inverse .navbar-nav>li>a
+{
+
+  color: white;
+}
+.img{
+  margin-left:36rem;
+}
+</style>
+</head>
+
+<body style="background-color:#e9e9e9;">
+<!--
+1) class=navbar
+2) navbar-inverse
+-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="color: white; font-weight: 900;">ChatInsure</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Conversation</a></li>
+      <li><a href="#human">Call to Human agent </a></li>
+      <li><a href="#">Intents use</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+  
+<div class="container"  >
+
+<div class=" row col-lg-12">
+ 
+        <h1 class="page-header">  Dashboard </h1>
+      </div>
+
+
+
+<div class="row col-lg-8 col-md-10 col-xs-8 panel panel-primary panel-heading " id="my-box" >
+ 
+  <div> 
+<span class="img" ><img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar"></span>
+
+    <span class="page-header row  " id="my-conversation" >Conversation 1</span>
+  </div>
+  <div>
+    <span id="my-detail" class="pull-left col-sm-3 col-lg-6 col-md-6 panel-heading" >
+      <a  href="#"> View Details </a>
+
+    </span>
+  </div>
+</div>
+
+<span>
+<div class="row col-lg-8 col-md-10 col-xs-8 panel panel-primary panel-heading "  id="my-box" >
+  <div> 
+
+<span class="img" ><img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar"></span>
+
+    <a href="#" class="page-header row  " id="my-conversation" >Conversation 2</a>
+  </div>
+  <div>
+    <span id="my-detail" class="pull-left col-sm-3 col-lg-6 col-md-6 panel-heading" >
+      <a  href="#"> View Details </a>
+    </span>
+  </div>
+</div>
+</span>
+
+
+<span>
+<div class="row col-lg-8 col-md-10 col-xs-8 panel panel-primary panel-heading "  id="my-box" >
+  <div> 
+
+<span class="img" ><img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar"></span>
+
+    <a href="#" class="page-header row  " id="my-conversation" >Conversation 3</a>
+  </div>
+  <div>
+    <span id="my-detail" class="pull-left col-sm-3 col-lg-6 col-md-6 panel-heading" >
+      <a  href="" id="human"> View Details </a>
+    </span>
+  </div>
+</div>
+</span>
+
+
+<span>
+<div class="row col-lg-8 col-md-10 col-xs-8 panel panel-primary panel-heading "  id="my-box" >
+  <div> 
+
+<span class="img" ><img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar"></span>
+
+    <a href="#" class="page-header row  " id="my-conversation" >Conversation 4</a>
+  </div>
+  <div>
+    <span id="my-detail" class="pull-left col-sm-3 col-lg-6 col-md-6 panel-heading" >
+      <a  href="#"> View Details </a>
+    </span>
+  </div>
+</div>
+</span>
+
+
+</body>
+</html>
+
+
+
+
+
+

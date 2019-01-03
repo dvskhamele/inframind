@@ -1,0 +1,196 @@
+<head>
+	<title>onChange / onArrowClick events</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="https://www.nkarbooking.com/codebase/fonts/font_roboto/roboto.css">
+    <link rel="stylesheet" type="text/css" href="https://www.nkarbooking.com/codebase/dhtmlxcalendar.css">
+    <script src="https://www.nkarbooking.com/codebase/dhtmlxcalendar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<style>
+		#calendarHere {
+			position: relative;
+			height: 350px;
+		}
+		#logsHere {
+			width: 700px;
+			height: 150px;
+			overflow: auto;
+			border: 1px solid #dfdfdf;
+			font-family: Roboto, Arial, Helvetica;
+			font-size: 14px;
+			color: #404040;
+		}
+	</style>
+	<script>
+		var myCalendar;
+		var logObj;
+		var logInd = 0;
+		var logData = [];
+		var logInd = 0;
+		
+		function doOnLoad() {
+			
+			myCalendar = new dhtmlXCalendarObject("calendarHere");
+			myCalendar.show();
+			myCalendar.setDate(new Date());
+			var date = new Date();
+var currentDate = date.toISOString().slice(0,10);
+			var currentTime = date.getHours() + ':' + date.getMinutes();
+			document.getElementById("meetup_at").value = currentTime;
+			console.log(currentTime);
+			
+			document.getElementById("meetup_date").value = myCalendar.getFormatedDate("%d-%m-%Y");
+			myCalendar.setInsensitiveDays(["2018-09-08","2018-10-13","2018-09-22","2018-13-08","2018-10-27","2018-11-10","2018-11-24","2018-12-08","2018-12-22","2018-12-25"]);
+			myCalendar.disableDays("week", 7);
+
+			myCalendar.attachEvent("onChange", function(d){
+				logData.push(myCalendar.getFormatedDate("%d-%m-%Y",d));
+				document.getElementById("meetup_date").value = myCalendar.getFormatedDate("%d-%m-%Y",d);
+				writeLog();
+			});
+			myCalendar.attachEvent("onArrowClick", function(d){
+				logData.push(myCalendar.getFormatedDate("%d-%m-%Y",d));
+				document.getElementById("meetup_date").value = myCalendar.getFormatedDate("%d-%m-%Y",d);
+				writeLog();
+			});
+		}
+		
+		
+		function writeLog() {
+			if (!logObj) logObj = document.getElementById("logsHere");
+			var t = "";
+			for (var q=logData.length-1; q>=Math.max(logData.length-6,0); q--) t += logData[q]+"<br>";
+			logObj.innerHTML = t;
+		}
+		
+		function set_date_with_input(){
+			myCalendar.setFormatedDate("%d-%m-%Y", document.getElementById("meetup_date").value);
+						console.log(document.getElementById("meetup_date").value);
+			document.getElementById("meetup_at").value = "00:00";
+		}
+	</script>
+</head>
+<body>
+<main>
+
+
+  <section>
+    <h1>HTML 5.2 Dialog</h1>
+    <button type="button" class="openBtn">Open Dialog</button>
+  </section>
+  
+  <dialog class="dialog" style="height: 473.813;
+    padding-bottom: 105px;
+    padding-top: 17px;
+    top: 0px;
+    margin-bottom: 105px;
+    border-bottom-width: 99px; ">
+    
+    <h2>Dialog</h2>
+    <p>Ut auctor nunc non lorem condimentum, vel viverra lectus blandit. Phasellus est mauris, euismod auctor turpis ac, porta facilisis elit. Aliquam scelerisque sodales massa. Integer et nunc at arcu hendrerit euismod.</p>
+    <button type="button" class="closeBtn">Close</button>
+  
+<div onload="doOnLoad();">
+	<div id="calendarHere">
+	<div class="dhtmlxcalendar_material" style="visibility: visible; left: 0px; top: 0px; z-index: 105;">
+	<div><div class="dhtmlxcalendar_month_cont">
+		<ul class="dhtmlxcalendar_line">
+			<li class="dhtmlxcalendar_cell dhtmlxcalendar_month_hdr">
+				<div class="dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_left" onmouseover="this.className=&quot;dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_left_hover&quot;;" onmouseout="this.className=&quot;dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_left&quot;;">
+					
+				</div>
+				<span>
+					<span class="dhtmlxcalendar_month_label_month">September</span>
+					<span class="dhtmlxcalendar_month_label_year">2018</span>
+				</span><div class="dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_right" onmouseover="this.className=&quot;dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_right_hover&quot;;" onmouseout="this.className=&quot;dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_right&quot;;"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="dhtmlxcalendar_days_cont">
+		<ul class="dhtmlxcalendar_line">
+			<li class="dhtmlxcalendar_cell_wn">
+				<div class="dhtmlxcalendar_label">w</div>
+			</li>
+			<li class="dhtmlxcalendar_cell_first">Mo</li>
+			<li class="dhtmlxcalendar_cell">Tu</li>
+			<li class="dhtmlxcalendar_cell">We</li>
+			<li class="dhtmlxcalendar_cell">Th</li>
+			<li class="dhtmlxcalendar_cell">Fr</li>
+			<li class="dhtmlxcalendar_cell dhtmlxcalendar_day_weekday_cell">Sa</li>
+			<li class="dhtmlxcalendar_cell dhtmlxcalendar_day_weekday_cell">Su</li>
+		</ul>
+	</div>
+	<div class="dhtmlxcalendar_dates_cont">
+		<ul class="dhtmlxcalendar_line">
+			<li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">35</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">27</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">28</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">29</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">30</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">31</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend"><div class="dhtmlxcalendar_label">1</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">2</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">36</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">3</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">4</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">5</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">6</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">7</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">8</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">9</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">37</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">10</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">11</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">12</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">13</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_date"><div class="dhtmlxcalendar_label">14</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend"><div class="dhtmlxcalendar_label">15</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">16</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">38</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">17</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">18</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">19</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">20</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">21</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">22</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">23</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">39</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">24</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">25</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">26</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">27</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">28</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend"><div class="dhtmlxcalendar_label">29</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">30</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">40</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">1</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">2</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">3</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">4</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">5</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_weekend"><div class="dhtmlxcalendar_label">6</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_weekend_dis"><div class="dhtmlxcalendar_label">7</div></li></ul></div><div class="dhtmlxcalendar_time_cont dhtmlxcalendar_mode_time" style=""><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell dhtmlxcalendar_time_hdr"><div class="dhtmlxcalendar_time_img"></div><span class="dhtmlxcalendar_label_hours">03</span><span class="dhtmlxcalendar_label_colon">:</span><span class="dhtmlxcalendar_label_minutes">57</span><span class="dhtmlxcalendar_label_clear">Clear</span><span class="dhtmlxcalendar_label_today">Today</span></li></ul></div></div></div>
+		
+
+	<div class="dhtmlxcalendar_material" style="visibility: visible; left: 0px; top: 0px; z-index: 105;"><div><div class="dhtmlxcalendar_month_cont"><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell dhtmlxcalendar_month_hdr"><div class="dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_left" onmouseover="this.className=&quot;dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_left_hover&quot;;" onmouseout="this.className=&quot;dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_left&quot;;"></div><span><span class="dhtmlxcalendar_month_label_month">September</span> <span class="dhtmlxcalendar_month_label_year">2018</span></span><div class="dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_right" onmouseover="this.className=&quot;dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_right_hover&quot;;" onmouseout="this.className=&quot;dhtmlxcalendar_month_arrow dhtmlxcalendar_month_arrow_right&quot;;"></div></li></ul></div><div class="dhtmlxcalendar_days_cont"><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">w</div></li><li class="dhtmlxcalendar_cell_first">Mo</li><li class="dhtmlxcalendar_cell">Tu</li><li class="dhtmlxcalendar_cell">We</li><li class="dhtmlxcalendar_cell">Th</li><li class="dhtmlxcalendar_cell">Fr</li><li class="dhtmlxcalendar_cell dhtmlxcalendar_day_weekday_cell">Sa</li><li class="dhtmlxcalendar_cell dhtmlxcalendar_day_weekday_cell">Su</li></ul></div><div class="dhtmlxcalendar_dates_cont"><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">35</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">27</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">28</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">29</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">30</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">31</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend"><div class="dhtmlxcalendar_label">1</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">2</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">36</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">3</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">4</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">5</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">6</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">7</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">8</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">9</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">37</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">10</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">11</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">12</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">13</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">14</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend"><div class="dhtmlxcalendar_label">15</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">16</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">38</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">17</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">18</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">19</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">20</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">21</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">22</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">23</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">39</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">24</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">25</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">26</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_date"><div class="dhtmlxcalendar_label">27</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month"><div class="dhtmlxcalendar_label">28</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend"><div class="dhtmlxcalendar_label">29</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_month_weekend_dis"><div class="dhtmlxcalendar_label">30</div></li></ul><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell_wn"><div class="dhtmlxcalendar_label">40</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">1</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">2</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">3</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">4</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell"><div class="dhtmlxcalendar_label">5</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_weekend"><div class="dhtmlxcalendar_label">6</div></li><li class="dhtmlxcalendar_cell dhtmlxcalendar_cell_weekend_dis"><div class="dhtmlxcalendar_label">7</div></li></ul></div><div class="dhtmlxcalendar_time_cont dhtmlxcalendar_mode_time" style=""><ul class="dhtmlxcalendar_line"><li class="dhtmlxcalendar_cell dhtmlxcalendar_time_hdr"><div class="dhtmlxcalendar_time_img"></div><span class="dhtmlxcalendar_label_hours">04</span><span class="dhtmlxcalendar_label_colon">:</span><span class="dhtmlxcalendar_label_minutes">15</span><span class="dhtmlxcalendar_label_clear">Clear</span><span class="dhtmlxcalendar_label_today">Today</span></li></ul></div></div></div></div>		
+
+		
+	<input id="meetup_date" onchange="set_date_with_input();" type="text">
+	<input id="meetup_at" type="time">
+
+</div>
+
+
+  </dialog>
+  
+</main>
+</body>
+
+<style>
+//Basic Styles
+body
+  line-height: 1.5
+  color: #262626
+  background: #f1f1f1
+h1, h2
+  margin-top: 0
+  margin-bottom: 1rem
+button
+  border: 0
+  padding: 12px
+  cursor: pointer
+  outline: 0
+  color: rgba(black,0.75)
+section
+  margin: auto
+  padding: 2rem
+  background: white
+  max-width: 800px
+  
+//Dialog
+.dialog
+  max-width: 800px
+  max-height: 800px
+  padding: 2rem
+  border: 0
+  box-shadow: 0 10px 20px rgba(black,0.19), 0 6px 6px rgba(black,0.23)
+  animation: dialog .5s
+
+@keyframes dialog
+  from 
+    opacity: 0
+    transform: translateY(2rem)
+
+</style>
+
+<script>
+    (function() {
+// Declare Variables
+var dialog = document.querySelector('.dialog'),
+    openBtn = document.querySelector('.openBtn'),
+    closeBtn = document.querySelector('.closeBtn');
+
+// show modal
+openBtn.addEventListener('click', function() {
+  dialog.showModal();
+})
+// close modal
+closeBtn.addEventListener('click', function() {
+  dialog.close();
+})
+})();
+
+</script>

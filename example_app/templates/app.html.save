@@ -1,0 +1,3810 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ChatInsure</title>
+  <meta charset="utf-8">
+
+    <script type="text/javascript" src="https://www.google.com/jsapi">
+    </script>
+    
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>    
+  <link rel="stylesheet"
+   href="/static/css/custom.css"/>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" type="text/css" href="https://www.nkarbooking.com/codebase/dhtmlxcalendar.css"/>
+    <script src="https://www.nkarbooking.com/codebase/dhtmlxcalendar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          
+
+ 
+<link rel="stylesheet" href="/static/css/every_style.css"/>
+
+<link rel="stylesheet" href="/static/css/google_form.css"/>
+
+  </head>
+
+
+  <body >
+
+
+    <div class="container">
+      <div class="row" style="margin-top: 39px!important;" >
+      <div class="col-md-2" >
+        </div>
+      <div class="col-md-8 jumbotron mt-1 " style="border-color: whitesmoke;" >
+        <div>
+       <h1 style="font-size: 26px;margin-top:-46px;"  
+       > <img  src="https://dumielauxepices.net/sites/default/files/life-insurance-clipart-pru-664814-2514655.png" style="
+    width: 5rem;
+    height: 4rem;
+">
+Ask ILVA. . . </h1>
+       
+        <img style="
+    height: 1rem;
+    width: 3rem;
+    float: auto;
+    border-radius: 3rem;
+    margin-left: 10px;
+" src="https://vignette.wikia.nocookie.net/animal-jam-clans-1/images/f/fa/Online.gif/revision/latest?cb=20171118161041">
+      
+        </div>
+        <hr class="my-2">
+
+        <div class="row" style="
+    height: 366px;
+">
+            
+          <div class="col-xs-12 col-sm-12 col-md-12 col-xs-12 offset-xs-12 " style="height: 556px;">
+
+            <ul class="list-group chat-log js-chat-log chat-bubble" style="height: 350px; max-height: 600px; padding-bottom: 8px;">
+
+            </ul>
+
+            <div class="input-group input-group-lg row" >
+              <input type="text" style="border-radius: 4rem;" id="ChatInput" class="form-control js-text" placeholder="Start typing..."/>
+              
+            <button type="submit" class="btn btn-primary btn-lg" onclick="type_submitted();" style="font-size:18px; color:blue; background: 
+              transparent; border:transparent; margin-left:-9px;"> 
+              <i class="fa fa-send" style="font-size: 31px;" ></i>
+
+            </button>
+            
+              
+              </div>
+            
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+    </div>
+    <script type="text/javascript">
+     function type_submitted(){
+        var ChatInput = document.getElementById("ChatInput");
+        submitInput(ChatInput.value);
+      }
+    </script>
+     <script type="text/javascript" src="/static/js/every_script.js">
+</script>
+<script type="text/javascript" src="/static/js/every_appointment.js">
+
+</script>
+
+    <script src="/static/js/garages1.js"></script>
+    <script src="/static/js/garages.js"></script>
+
+
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/js.cookie.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script>
+      var chatterbotUrl ="/chatterbot/";
+      var csrftoken = Cookies.get('csrftoken');
+
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain){
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
+
+      var $chatlog = $('.js-chat-log');
+      
+
+      var $input = $('.js-text');
+      var $sayButton = $('.js-say');
+
+        var inputData = {
+          'text': $input.val()
+        }
+        
+
+      function userRow(text) {
+        var str="";
+    str += "<div' class=\"chat-msg "+$row+"\">";
+    str += "          <span class=\"msg-avatar\">";
+    str += " <img src=https://sunriseprowebsites.com/backstage/app/views/client/lutfi-cloud/lutfi-file/images/avatar.png>";
+    str += "          <\/span>";
+    str += "          <div"+$row+">";
+
+
+        var $row = $('<li>',{ class:"list-group-item user-group-item",style:"border-bottom-left-radius: 24px;border-bottom-right-radius: 24px;border-top-left-radius: 24px;border-top-right-radius: 0rem;margin-right: 18px;margin-left: auto;position: relative;max-width: fit-content;background-color:#5e97f6;color:white"});
+        $row.text(text);
+        $chatlog.append($row)
+
+
+                  if(text.indexOf("ticket") !== -1 )
+        {
+          
+
+          var inputDataObj = {
+          'text': text,
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/ticket_status/",
+          data: {"data": JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            // Clear the input field
+            $input.val('');
+            if (statement.name == "NotFound")
+            {
+              createRow("The entered ticket number is unavailable.");
+            }
+            else
+            {
+            createRow(statement.status);
+            // Scroll to the bottom of the chat interface
+          }
+        });
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+}
+
+
+      function createRow(text) {
+          var str="";
+    str += "<div' class=\"chat-msg-i "+$row+"\">";
+    str += "          <span class=\"msg-avatar\">";
+    str += '<img src="https://banner2.kisspng.com/20180611/rrg/kisspng-icici-bank-state-bank-of-india-banking-in-india-ba-5b1f39b27e6008.2584101615287730425176.jpg" alt="ICICI Lombard">';
+    str += "          <\/span>";
+    str += "          <div"+$row+">";
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;border-bottom-left-radius: 24px;border-bottom-right-radius: 24px;border-top-left-radius: 0rem;border-top-right-radius:24px;margin-left: 1rem;position: relative;max-width: fit-content;"});
+        
+              $chatlog.append(str);
+
+        if(text=="policyF")
+        {
+        
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $row.text("Okay, How you want to buy?");
+        $chatlog.append($row);
+
+
+          var form = $("<div/>", 
+                 { style:"margin-top:10px;background-color: #03dac6;width:45%;",      }
+            )
+          form.append( 
+    $("<button>", 
+         { type:'submit', 
+           name:'button',  
+           class:"list-group-item",
+           text: "I want to fill details",
+           onclick: "submitInput('Creating Two wheeler proposal')",
+           width:"100"}
+   )
+ 
+
+);
+      $row = form;
+
+        $chatlog.append($row);
+
+
+          var form = $("<div/>", 
+                 { style:"margin-top:10px;background-color: #03dac6;width:45%;",       }
+            )
+
+          var button = $("<button>",
+         { type:'submit', 
+           name:'button',  
+           class:"list-group-item",
+           text: "Buy off the shelf",
+           width:"100%",
+           onclick:"submitInput('recommend IDV')",}
+
+ 
+
+);
+        form.append(button);
+        $chatlog.append(form);
+
+          
+
+        }
+        else{
+
+
+                  if(text.indexOf("showing_calenda") !== -1 )
+        {
+
+   var myEle = document.getElementById("calendar_booking_button");
+    if(myEle){
+        myEle.remove();
+    }
+
+   var myEle = document.getElementById("calendar_booking");
+    if(myEle){
+        myEle.remove();
+    }
+
+        var $row = $('<li >',{class:"list-group-item",id:"calendar_booking",style:"background-color: transparent;border: none;"});
+
+          var form = $("<button/>", 
+                 {onclick:"doOnLoad();",class:"btn btn-primary my_button",id:"calendar_booking_button"}
+            )
+
+        form.text("Book a date");
+        $row.append(form);
+
+        $chatlog.append($row);
+
+   var myEle = document.getElementById("calendarCase");
+    if(myEle){
+        myEle.remove();
+    }
+
+   var myEle = document.getElementById("calendarHere");
+    if(myEle){
+        myEle.remove();
+    }
+
+   var myEle = document.getElementById("timeInput");
+    if(myEle){
+        myEle.remove();
+    }
+
+   var myEle = document.getElementById("timeCase");
+    if(myEle){
+        myEle.remove();
+    }
+
+        var $row = $('<li >',{id:'calendarCase',class:"calendarstyle"});
+        
+        var $row1 = $('<div >',{id:'calendarHere'});
+ 
+        
+        var $row2 = $("<div>", 
+         { 
+         id:"timeCase",
+           style:"height:auto;background-color: transparent;display:none;margin-bottom:1rem;",
+           }
+            )
+
+        var $row3 = $("<input>", 
+         { type:'time', id:"timeInput",max:'17:00',min:'10:00', style:"margin-left: 7px;margin-right: 10px;height: auto;margin-top:1rem;"
+           }
+            )
+
+        var $button2 = $("<button>", 
+         { type:'submit',
+           class:"btn btn-light",         
+           onclick:"createRow('Okay :)');",
+           text:"Cancel appointment",
+           style:"height:auto;"
+           }
+            )
+
+        var $button3 = $("<button>", 
+         { type:'submit',class:"btn btn-primary",
+           onclick:"confirmIt();",
+           text:"Confirm It",
+           style:"height: auto;margin-left: 8px;margin-right: 2rem;"
+           }
+            )
+        
+        $row.append($row1);  
+        $row.append($row2)
+        $row2.append($row3)
+        $row2.append($button2);
+        $row2.append($button3);
+        
+        $chatlog.append($row);
+
+
+        var $div = $("<div>", 
+         { class:"list-group-item",
+           style:"height:100px;background-color: transparent;display:none;",
+           }
+            )
+
+        var $row = $("<button>", 
+         { type:'submit', 
+           name:'button',  
+           text: "Confirm selected Time",
+           class:"list-group-item",
+           style:"margin-top:10px;background-color: #03dac6;",
+           onclick:"submitInput('confirm time')",
+           }
+            )
+
+        $div.append($row);
+
+        $chatlog.append($div);
+
+
+
+
+
+        }
+        else{
+        if(text.indexOf("NameAppoint") !== -1 )
+                {
+
+        var $row = $('<li >',{class:"list-group-item",id:"calendar_booking",style:"background-color: white; margin-top: 63px;"});
+
+var $form = $("<div>", { id:"generaldetail"} 
+            )
+
+          $form.append('{% csrf_token %}');
+
+
+          var $input_city = $("<div>", 
+         {class:"col-md-12 custom-file input_div form-group font-weight-bold",
+         text:"Your Name"})
+  
+
+
+
+          var $input_city_i = $("<input>", 
+         { placeholder:"Name", class:"input_input form-control",
+         type:"text", id:"name",
+         name:"name" }
+            )
+
+
+
+$input_city.append($input_city_i)
+$form.append($input_city);
+
+
+
+
+          var $input_city = $("<div>", 
+         {class:"col-md-12 custom-file input_div form-group font-weight-bold",
+         text:"Contact Number"})
+  
+
+
+
+          var $input_city_i = $("<input>", 
+         { placeholder:"Contact Number",class:"input_input form-control",type:"number", id:"contact_number",name:"contact_number"}
+            )
+
+$input_city.append($input_city_i)
+$form.append($input_city);
+
+          var $input_city = $("<div>", 
+         {class:"col-md-12 custom-file form-group font-weight-bold input_div"
+         })
+
+          var $input_city_i = $("<button>", 
+         { 
+         type:"submit", id:"submit_name_appoint", class:"btn btn-primary my_button",style:"width:20rem;", onclick:"check_number()",
+         name:"submit_name_appoint", text:"Submit" }
+            )
+
+
+
+$input_city.append($input_city_i);
+$form.append($input_city);
+
+
+
+        $row.append($form);
+        $chatlog.append($row);
+
+
+
+
+
+
+        }
+        else{
+
+if (text == "feedback")
+{
+
+
+  var $row_i=$('<strong>',{ style:"margin-bottom:10px;"});
+  $row_i.text("Feedback form");
+   $chatlog.append($row_i)
+
+  var $row1=$('<div>',{class:"form-group",style:"font-weight:500;"});
+
+
+
+  var $row2=$('<strong>',{style:"font-weight:500;"});
+  $row2.text("Name:");
+  
+  var $row3=$('<input>',{class:"form-control", id:"feedback_name",name:"feedback_name",placeholder:"Name...", type:"text", style:"margin:10x;margin-bottom:10px;box-shadow:1px 1.9px 8px;width:50%;margin-left:10px;margin-left:10px"});
+
+  var $row4=$('<strong>',{style:"font-weight:500;"});
+  $row4.text("Email:");
+
+  var $row5=$('<input>',{class:"form-control", id:"feedback_mail",name:"feedback_mail",placeholder:"Email...", type:"text", style:"margin:10x;box-shadow:1px 1.9px 8px;margin-bottom:10px;width:50%;margin-left:10px"});
+
+  var $row6=$('<strong>',{style:"font-size:20px;font-weight:500;"});
+  $row6.text("F");
+
+  var $row7=$('<strong>',{style:""});
+  $row7.text("eedback/ Suggessions:");
+
+  var $row8=$('<textarea>',{class:"form-control", id:"feedback_text",name:"feedback_text",placeholder:"Drop you Feedback/Suggessions  here...", type:"text", rows:"5", style:"margin:10x;margin-left:10px; box-shadow: 1px 1.9px 8px ;width:50%"});
+
+  var $row9=$('<button>',{class:"btn btn-light my_button_light", id:"feedback_button",name:"feedback_button", type:"submit", text:"Submit!", style:" margin-top:10px; box-shadow: 1px 1.9px 8px ; margin-left:10px", onclick:"Feedback();"});
+
+
+  $row1.append($row2)
+  $row1.append($row3)
+
+  $row1.append($row4)
+  $row1.append($row5)
+  $row1.append($row6)
+  $row1.append($row7)
+ 
+  $row1.append($row8)
+  $row1.append($row9)
+ 
+  $chatlog.append($row1)
+}
+else{
+ 
+                  if(text == "for_garage" || text == "for_branch")
+{   
+
+
+    var $garage = $('<li>',{ id:"garage_partener",class:"list-group-item", style:"height: fit-content;width: fit-content;max-width: 25rem;background-color: white;border-width: 0px;padding: 0px;"});
+ 
+
+      var $row=$('<div>', {class:"container"});                                  
+
+
+      var $row2=$('<div>', {class:"table-responsive"});
+        
+      var $table=$('<table>', {class:"table"});
+ 
+  var $thead = $('<thead>')
+  var $tr = $('<tr>')
+  var $th2 = $('<th>',{text:"Select a garage to book"})
+ 
+$tr.append($th2);
+$thead.append($tr);
+
+var $tbody= $('<tbody>')    
+
+if (text=="for_garage")
+{
+var mumbai_markers = get_mumbai_markers()
+}
+if (text=="for_branch")
+{
+var mumbai_markers = get_all_branches()
+}
+for (var i = mumbai_markers.length - 1; i >= 0; i--) {
+
+var $tr4 =$('<tr>', {id:"garage_select_"+i,class:"garage_select",name:"garage_select_"+i, 
+text:mumbai_markers[i].title, lat:mumbai_markers[i].position["lat"], lng:mumbai_markers[i].position["lng"],
+onclick:"$('tr[name^=garage_select_]').css('background-color', '');$('tr[name^=garage_select_"+i+"]').css('background-color', '#dddddd61');createRow('showing_calendar');"
+}
+)
+
+$tbody.append($tr4); 
+}
+
+$table.append($thead);
+$table.append($tbody);
+$row2.append($table);
+$row.append($row2);
+
+$garage.append($row);
+$chatlog.append($garage);
+}
+
+
+else{
+              
+                  if(text.indexOf("cover you looking") !== -1 )
+        
+        {
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $row.text("What cover you looking for?");
+        $chatlog.append($row);
+
+
+          var div = $("<div/>", 
+                 { style:"display:inline-block;margin-right:10px; overflow-y: auto;margin-top:10px;margin-top:30px;margin-top:5px;class:'list-group-item';background-color:#e9ecef; width:70%;",       }
+            )
+
+          var form = $("<button>", 
+         { type:'submit', 
+           name:'button',  
+           class:"btn btn-primary",
+           text: "I am looking for -1 cover",
+           width:"100%",
+           style:"color:white;margin-top:10px;margin-right:20px; border-radius:9px;width:45%;border-color:#b3bfc8a3",
+           onclick:"submitInput('I am looking for -1 cover')",}
+            )
+
+$row = form;
+        div.append(form);
+
+          var form = $("<button>", 
+         { type:'submit', 
+           name:'button',  
+           class:"btn btn-primary",
+           text: "I am looking for +1 cover",
+           width:"100%",
+           style:"color:white;border-radius:9px; margin-top:10px;width:45%;border-color:#b3bfc8a3",
+           onclick:"submitInput('I am looking for +1 cover')",}
+          );
+      $row = form;
+      
+
+        div.append(form);
+        $chatlog.append(div);
+
+            }
+
+        else{
+
+                  if(text.indexOf("mapcase") !== -1 || text.indexOf("mapCase") !== -1 || text.indexOf("garagecase") !== -1 || text.indexOf("garageCase") !== -1 )
+        {
+
+
+
+                  if(text.indexOf("garageCase") !== -1 || text.indexOf("garagecase") !== -1)
+        {
+        var $mapCase = $('<li>',          { para:"branch",id:"mapCase",class:"list-group-item", style:"height: 314px;width: 508px;max-width: none;background-color: transparent;border-width: 0px;padding: 0px;"});
+} 
+else{
+if(text.indexOf("mapcase") !== -1 || text.indexOf("mapCase") !== -1 )
+        {
+        var $mapCase = $('<li>',          { para:"garage",id:"mapCase",class:"list-group-item", style:"height: 314px;width: 508px;max-width: none;background-color: transparent;border-width: 0px;padding: 0px;"});
+} 
+}
+        var $row1 = $('<div>',
+                { id:"floating-panel"  , text:"Mode of Travel:",   })
+        
+    $row.append($mapCase)    
+    $mapCase.append($row1)
+        var $row2 = $('<select>',
+                { id:"mode"});
+        
+
+    $row1.append($row2)
+    
+        var $row3 = $('<option>',
+                {value:"DRIVING", text:"Driving"});
+        
+     
+    $row2.append($row3)
+    
+        var $row4 = $('<option>',
+                { value:"WALKING",text:"Walking"});
+            
+    $row2.append($row4)
+        var $row5 = $('<option>',
+                { value:"BICYCLING",text:"Bicycling"});
+        
+    
+    $row2.append($row5)
+        var $row6 = $('<option>',
+                { value:"TRANSIT",text:"Transit"});
+        
+    
+    $row2.append($row6)
+    
+    
+
+        var $row = $('<div>', { id:"map", style:"position: relative;overflow: hidden;border-width: 1px;border-radius: 1rem;"});
+
+        $mapCase.append($row);
+ 
+        $chatlog.append($mapCase);
+
+          var form = $("<script>", 
+         { src:"https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dImhmK-fbMwnIMRmLWer9N_P2U7YfLs&libraries=visualization&callback=initMap",}
+            )
+
+      $row = form;
+
+        $chatlog.append($row);
+      }
+
+        else{
+
+
+
+
+
+                  if(text.indexOf("sifhip") !== -1 )
+        {
+
+
+
+        var $mapCase = $('<li>',          { id:"policyCase1",class:"list-group-item"});
+ 
+$mapCase.text("");
+
+            var $row = $('<div>',          { id:"generalSection"});
+            
+
+  
+
+          var $form = $("<form>", 
+         { action:"/index/", method:"GET", text:"General Section",class:"well form-vertical",text:"General Detail" ,style:"font-size:92%; margin-left:17px; border-radius:5.2rem; padding:0.2rem 3.4rem;"}
+            )
+
+
+
+          var $input1  =     $("<div>", 
+         {class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important" ,text:"Correlation ID" })
+
+          var $input1i  =   $("<input>", 
+         { id:"correlation_id",name:"correlation_id",required:"true",style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ",placeholder:"Correlation Id"}
+            )
+
+          $input1.append($input1i);
+
+
+
+          var $input2  =     $("<div>", 
+         { class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important",text:"Business Type"})
+
+          var $input2i =     $("<select>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ", name:"business_type", id:"business_type", required:"true",placeholder:"Business type",  onchange:"h(); f(); g(); "}
+            )
+
+          var $opt1  =  $("<option>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ", value:"false", text:"Rollover"}
+            )
+
+          var $opt2 =     $("<option>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ", value:"true", text:"New Business"}
+            )
+
+          $input2.append($input2i);
+
+
+
+
+          var $input3  =     $("<div>", 
+         { class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important",text:"Deal ID"})
+
+          var $input3i =     $("<input>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ",  id:"deal_id", name:"deal_id",placeholder:" Valid Deal ID",  required:"true",  type:"text" 
+          }
+            )
+
+
+          var $input = $("<div>", 
+         { class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important"})
+
+          var $input4  =     $("<div>", 
+         { class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important", text:"Vehical Make Model"})
+
+          var $input4i =     $("<input>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ", id:"vehical_make_code", name:"vehical_make_code" ,placeholder:"Vehical Make Code",required:"true" ,type:"number",min:"0" 
+          }
+            )
+
+
+
+          var $input5  =     $("<div>", 
+         { class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important",text:"OTher field"})
+
+          var $input5i =     $("<input>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ",  id:"vehical_model_code" ,name:"vehical_model_code",placeholder:"Model code" ,  required:"true" , type:"number",  min:"0" ,max:"",
+          }
+            )
+
+          var $input6  =     $("<div>", 
+         { class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important" ,text:"Vehical Description"})
+
+          var $input6i =     $("<input>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ",  id:"vehical_description" ,name:"vehical_description",placeholder:"Vehical Description"   , type:"text"
+
+          }
+            )
+
+          var $input7  =     $("<div>", 
+         { class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important" ,text:"RTO location code"})
+
+          var $input7i =     $("<input>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ",  id:"rto_location_code", name:"rto_location_code",placeholder:"rto_location_code" , required:"true",  type:"number" , min:"0" ,max:""
+
+          }
+            )
+          var $input8  =     $("<div>", 
+         {text:"Ex-showroom Price", class:"col-md-8 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important"})
+
+          var $input8i =     $("<input>", 
+         { style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", class:"form-control ",  id:"ex_showroom_price", name:"ex_showroom_price" ,placeholder:"Ex-ShowRoom Price"  ,required:"true" ,  type:"number" ,min:"0", max:""
+
+          }
+            )
+
+        $form.append($input48);
+
+        $input49.append($input49i);
+        $form.append($input49);
+
+            }
+        else{
+   
+
+                  if(text.indexOf("IDV") !== -1 )
+        {
+        var $row = $('<li class="list-group-item">');
+        var $div1 = $('<div>',{style:"margin-top:13px;"});
+        var $div2 = $('<div>',{style:"margin-top:19px;"});
+        var text="The IDV of the vehicle is to be fixed based on the manufacturer's listed selling price of the brand and model, as the vehicle proposed for insurance at the commencement of insurance /renewal and adjusted for depreciation.";
+
+        $div1.text(text);
+        var text="The IDV of the side car(s) and/ or accessories, if any, fitted to the vehicle, but not included in the manufacturer's listed selling price of the vehicle is also likewise to be fixed. The schedule of depreciation for arriving at IDV is as below:"
+
+        $div2.text(text);
+
+
+
+        var $table = $('<table>',{style:"margin-top:19px;",class:"table"});
+        
+        var $rowa = $('<th>');
+        var $cola1 = $("<td>",{text:"Schedule Of Depreciation For Arriving At IDV"}); 
+
+        var $cola2 = $("<td>",{style:"text-align:right;",text:"Age Of The Vehicle  % Of Depreciation Fixing IDV"}) 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Not exceeding 6 months"}); 
+
+        var $cola2 = $("<td>",{text:"5%"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Exceeding 6 months but not exceeding 1 year"}); 
+
+        var $cola2 = $("<td>",{text:"15%"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Exceeding 1 year but not exceeding 2 years"}); 
+
+        var $cola2 = $("<td>",{text:"20%"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Exceeding 2 years but not exceeding 3 years"}); 
+
+        var $cola2 = $("<td>",{text:"30%"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Exceeding 3 years but not exceeding 4 years "}); 
+
+        var $cola2 = $("<td>",{text:"40%"});
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Exceeding 4 years but not exceeding 5 years"}); 
+
+        var $cola2 = $("<td>",{text:"50%"}); 
+        
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+        $row.append($div1);
+        $div2.append($table);
+        $row.append($div2);
+        $chatlog.append($row);
+      }
+      else{
+
+
+                  if(text.indexOf("NCBDEFINE") !== -1 )
+        {
+        var $row = $('<li class="list-group-item">');
+        var $div1 = $('<div>',{style:"margin-top:13px;"});
+        var $div2 = $('<div>',{style:"margin-top:19px;"});
+        var text="No Claim Bonus (NCB)";
+
+        $div1.text(text);
+        var text="It is a discount on premium of the Own Damage (OD) portion of your vehicle when you renew your policy, provided you have not made any claim during the last policy period. The NCB can be accumulated up to a maximum limit of 50% on OD premium. You can transfer the full benefits of NCB, even when you shift your motor insurance to ICICI Lombard from any other Insurance company. "
+
+
+        var $div_small_1 = $('<div>',{style:"margin-top:19px;"});
+        var $div_small_2 = $('<div>',{style:"margin-top:19px;"});
+        $div_small_1.text(text);
+
+        var text="NCB benefits are given as per the below :"
+
+        $div_small_2.text(text);
+
+        $div2.append($div_small_1);
+        $div2.append($div_small_2);
+
+        var $table = $('<table>',{style:"margin-top:15px;",class:"table"});
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<th>",{text:"All Type Of Vehicles"});
+
+        var $cola2 = $("<th>",{text:"Own Damage Premium Discount"})
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"No claim made or pending during the preceding full year of insurance"}); 
+
+        var $cola2 = $("<td>",{text:"20 % "}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"No claim made or pending during the preceding 2 consecutive years of insurance"}); 
+
+        var $cola2 = $("<td>",{text:"25 % "}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"No claim made or pending during the preceding 3 consecutive years of insurance"}); 
+
+        var $cola2 = $("<td>",{text:"35 % "}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"No claim made or pending during the preceding 4 consecutive years of insurance"}); 
+
+        var $cola2 = $("<td>",{text:"45 % "}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"No claim made or pending during the preceding 5 consecutive years of insurance"}); 
+
+        var $cola2 = $("<td>",{text:"50 % "}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+        $row.append($div1);
+        $div2.append($table);
+        $row.append($div2);
+        $chatlog.append($row);
+      }
+      else{
+
+
+                     if(text.indexOf("benefitsoflongterm") !== -1 )
+        {
+        var $row = $('<li >',{style:"background-color:white;",
+        class:"list-group-item"});
+        var $div1 = $('<div>',{style:"margin-top:13px;"});
+        var $div2 = $('<div>',{style:"margin-top:19px;"});
+        var text="There are varied benefits available to you if you are opting for a Long Term Two Wheeler Policy (LT) as opposed to a one year policy:";
+        $div1.text(text)
+    
+        var $table = $('<table>',{style:"margin-top:15px;",class:"table"});
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<th>",{text:"One Year Policy "});
+
+        var $cola2 = $("<th>",{text:"Long Term Policy"})
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Single Policy certificate valid for 1 year only"}); 
+
+        var $cola2 = $("<td>",{text:"Single Policy certificate valid for 3 years"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Reminder for renewal every year"}); 
+
+        var $cola2 = $("<td>",{text:"No worries or renewal reminder for 3 years"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"No ‘No Claim Bonus’ (NCB) benefits even if 1 claim is made in policy period "}); 
+
+        var $cola2 = $("<td>",{text:"NCB will be applicable for 1 or more claims as per the policy period"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Premium hike every year due to regulatory changes  "}); 
+
+        var $cola2 = $("<td>",{text:"Zero impact of hike in premium due to regulatory changes"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+ 
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+        $row.append($div1);
+        $div2.append($table);
+        $row.append($div2);
+        $chatlog.append($row);
+      }
+      else{
+
+                  if(text.indexOf("voluntry") != -1 )
+        {
+        var $row = $('<li >', {class:"list-group-item", style:"background-color:white;",});
+        var $div1 = $('<div>',{style:"margin-top:13px;"});
+        var $div2 = $('<div>',{style:"margin-top:19px;"});
+        var text="Voluntary deductible is the amount you opt for higher deductible over and above the compulsive deductible in the event of the claim. (Final Claim amount will be after deduction of depreciation on parts, VD and compulsory deductible as per IMT)";
+        $div1.text(text);
+
+
+        var $table_case = $('<div>',{style:"margin-top:4px;",class:"table",
+        text:"Please find below the voluntary deductible options avialable with car insurance :"
+        });
+
+        var $table = $('<table>',{style:"margin-top:4px;",class:"table",
+        });
+
+        $table_case.append($table);
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<th>",{text:"Vountry deductible "});
+
+        var $cola2 = $("<th>",{text:"discount"});
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Rs. 2,500.00 "}); 
+
+        var $cola2 = $("<td>",{text:"20% on the OD premium of the vehical of the vehical subject to a maximum of Rs.750/-"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Rs. 5,000.00"}); 
+
+        var $cola2 = $("<td>",{text:"25% on the OD premium of the vehical of the vehical subject to a maximum of Rs.1500/-"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Rs. 7,500.00 "}); 
+
+        var $cola2 = $("<td>",{text:"30% on the OD premium of the vehical of the vehical subject to a maximum of Rs.2000/-"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+        var $rowa = $('<tr>');
+        var $cola1 = $("<td>",{text:"Rs. 15,000.00"}); 
+
+        var $cola2 = $("<td>",{text:"350% on the OD premium of the vehical of the vehical subject to a maximum of Rs.2500/-"}); 
+
+        $rowa.append($cola1);
+        $rowa.append($cola2);
+        $table.append($rowa);
+
+        $table.append($rowa);
+        $row.append($div1);
+        $table_case.append($table);
+        $div2.append($table_case);
+        $row.append($div2);
+        $chatlog.append($row);
+      }
+      else{
+
+                  if(text.indexOf("Your appointment is booked!, You want any changes") !== -1 )
+                  {
+var text = "Your appointment is booked!, You want any changes?";
+        $row.text(text);
+        $chatlog.append($row);
+                  }
+else{
+
+
+      if(text.indexOf("policyFor") != -1 || text.indexOf("policyfor") != -1)
+{
+
+
+$row.text("For creation, Fill out this details.");
+
+
+   var $mapCase = $('<li>',          { id:"newform",class:"list-group-item",style:"background-color:white;    max-width: 90%; border-radius: 21px;"});
+ 
+
+
+        var $row = $('<div>',          { id:"newform"});
+ 
+
+
+          var $form = $("<div>", { class:"row"}
+            )
+
+          $form.append("{% csrf_token %}");
+
+         var $text =$("<div>",
+          {text:"General Detail" , class:"col-md-12" , style:"    margin-top: 5px; border-radius: 23px; margin-bottom: 12px;"})
+
+$form.append($text)
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {id:"reg_number", name:"reg_number",placeholder:"Registration Number"}
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+          var $input_veh_i  =     $("<div>", 
+         { class:"col-md-6 form-group row ", text:"Do you want to access an existing policy ?"})
+          
+
+          var $input_veh  =     $("<div>", 
+         {name:"old_policy",style:"margin-left:1px;",required:"true", class:"row"})
+          
+          var $input_radio = $("<label>",{ class:"radio col-md-6",style:"font-size:inherit;",text:"Yes"})
+          var $input_radio1 = $("<input>",{ type:"radio", value:"true", checked:"checked", name:"old_policy", id:"old_policy"})
+          var $input_radio2 = $("<span>",{class:"checkround"})
+
+          var $input_radio_i = $("<label>",{ class:"radio col-md-6" ,style:"font-size:inherit;", text:"No"})
+          var $input_radio_i1 = $("<input>",{ type:"radio",value:"false", name:"old_policy", id:"old_policy"})
+          var $input_radio_i2 = $("<span>",{  class:"checkround"})
+
+ 
+
+$input_radio.append($input_radio1)
+$input_radio.append($input_radio2)
+
+$input_radio_i.append($input_radio_i1)
+$input_radio_i.append($input_radio_i2)
+
+$input_veh.append($input_radio)
+$input_veh.append($input_radio_i)
+
+$input_veh_i.append($input_veh)
+$form.append($input_veh_i)
+
+
+ 
+
+          var $input_state = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"State" ,style:"display:none;margin-top:24px;font-weight:500!important "})
+  
+          var $input_state_i = $("<input>", 
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;display:none; color:#0a293e;border-radius:1.25rem;width:20rem", 
+
+         id:"state", name:"state" ,placeholder:"State" }
+            )
+
+$input_state.append($input_state_i)
+$form.append($input_state)
+
+ 
+
+      var $input_reg_date1  =     $("<div>", 
+         { class:"col-md-6 group",style:"font-weight:500!important",text:"Purchase Date"})
+
+          var $input_reg_date_i1 = $("<input>", 
+         {type:"date" ,id:"reg_date", name:"reg_date" ,placeholder:"First Registration Date" ,required:"true" }
+            )
+           
+                      var $new_date = $("<input>", 
+         { class:"form-control ", type:"text", id:"new_date", name:"new_date" ,placeholder:"preent new_date" ,style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; display:none;background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",  }
+            )
+
+	var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+          
+$input_reg_date1.append($new_date)
+
+$input_reg_date1.append($input_reg_date_i1)
+$input_reg_date1.append($input_policy_s1)
+
+$form.append($input_reg_date1)
+
+
+
+          var $input_reg  =     $("<div>", 
+         { class:"col-md-6 form-group row font-weight-bold",style:"font-weight:500!important", text:"Current registration type"})
+          
+          var $input_radio = $("<label>",{ class:"radio", value:"true",style:"font-size:inherit;margin-right:1rem;", text:"Individual"})
+          var $input_radio1 = $("<input>",{ type:"radio", value:"INDIVIDUAL", checked:"checked", name:"radio", id:"radio1"})
+          var $input_radio2 = $("<span>",{class:"checkround"})
+
+
+          var $input_radio_i = $("<label>",{ class:"radio" ,style:"font-size:inherit;", text:"Corporate"})
+          var $input_radio_i1 = $("<input>",{ type:"radio",value:"Corporate", name:"radio", id:"radio1"})
+          var $input_radio_i2 = $("<span>",{  class:"checkround"})
+
+
+$input_radio.append($input_radio1)
+$input_radio.append($input_radio2)
+
+$input_radio_i.append($input_radio_i1)
+$input_radio_i.append($input_radio_i2)
+
+$input_reg.append($input_radio)
+$input_reg.append($input_radio_i)
+
+ $form.append($input_reg)
+
+
+
+
+          var $input_location  =     $("<div>", 
+         { class:"col-md-6 group" })
+
+          var $input_location_i = $("<input>", 
+         { autocomplete:"off",  type:"text" , value:"", id:"location", name:"location" ,placeholder:"RTO Location" ,required:"true", onfocus:"rto_suggestions();"}
+            )
+
+        var $input_locationc_i = $("<input>", 
+         { autocomplete:"off", type:"text", id:"rto_code", name:"rto_code" ,placeholder:"RTO Location Code" ,style:"display:none;  " }
+            )          
+
+
+        var $input_locationcc_i = $("<input>", 
+         {autocomplete:"off", type:"text", id:"rto_city_code", name:"rto_city_code" ,placeholder:"RTO Location Code" ,style:"display:none; ",  }
+            )          
+
+
+        var $input_locationsc_i = $("<input>", 
+         {autocomplete:"off", type:"text", id:"rto_state_code", name:"rto_state_code" ,placeholder:"RTO Location Code" ,style:"display:none;  ",  }
+            )          
+
+
+	var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+
+$input_location.append($input_location_i)
+$input_location.append($input_locationc_i)
+$input_location.append($input_locationcc_i)
+$input_location.append($input_locationsc_i)
+$input_location.append($input_policy_s1)
+$form.append($input_location)
+
+
+
+
+
+
+          var $input_model  =     $("<div>", 
+         { class:"col-md-6 group"})
+
+          var $input_model_i = $("<input>", 
+         {  autocomplete:"off",  id:"model", name:"model" ,type:"text",placeholder:"Two wheeler Model" ,required:"true", onfocus:"model_suggestions();"}
+            )
+
+	var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_model.append($input_model_i);
+$input_model.append($input_policy_s1)
+
+$form.append($input_model)
+
+
+          var $input_modelc  =     $("<div>", 
+         { class:"col-md-6 group", autocomplete:"off", style:"display:none;"})
+
+            var $input_modelc_i = $("<input>", 
+         {  id:"modelc", name:"modelc" , autocomplete:"off", placeholder:"Two wheeler Model code" ,style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem"}
+            )
+
+	var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_modelc .append($input_modelc_i);
+$input_modelc.append($input_policy_s1)
+
+$form.append($input_modelc)
+
+
+
+          var $input_make  =     $("<div>", 
+         { class:"col-md-6 group"})
+
+          var $input_make_i = $("<input>", 
+         { autocomplete:"off",  id:"make", name:"make" ,type:"text",placeholder:"Two wheeler Make" ,required:"true", onfocus:"make_suggestions();"}
+            )
+
+	var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+         $input_make .append($input_make_i);
+$input_make.append($input_policy_s1)
+
+$form.append($input_make)
+
+
+          var $input_makec  =     $("<div>", 
+         { class:"col-md-6 form-group font-weight-bold", autocomplete:"off", style:"margin-top:24px;font-weight:500!important font-weight-bold",style:" font-weight:500!important; display:none;",text:"Two Wheeler make code"})
+
+            var $input_makec_i = $("<input>", 
+         { class:"form-control  ", value:"31", id:"makec", name:"makec" , autocomplete:"off", placeholder:"Two wheeler Make code" ,style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem"}
+            )
+         
+         $input_makec .append($input_makec_i);
+         $form.append($input_makec)
+
+
+
+
+
+
+
+
+
+          var $input_price  =     $("<div>", 
+         { class:"col-md-6 group"})
+
+          var $input_price_i = $("<input>", 
+         { autocomplete:"off",  type:"text" ,id:"price", name:"price" ,placeholder:"Ex-showroom price" ,required:"true"}
+            )
+  
+	var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_price.append($input_price_i)
+$input_price.append($input_policy_s1)
+
+$form.append($input_price)
+
+
+
+
+
+
+
+
+
+
+
+          var $input_number  =     $("<div>", 
+         { class:"col-md-6 group"})
+
+          var $input_number_i = $("<input>", 
+         { type:"number" ,default:"99999", value:"", id:"number", name:"number" ,placeholder:"Mobile number"}
+            )
+
+	var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_number.append($input_number_i)
+$input_number.append($input_policy_s1)
+
+$form.append($input_number)
+
+
+          var $input_email  =     $("<div>", 
+         { class:"col-md-6 group"})
+
+          var $input_email_i = $("<input>", 
+         { type:"email" ,default:"s@k.c", id:"email", name:"email" ,placeholder:"Email"}
+            )
+
+	var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_email.append($input_email_i)
+
+$input_number.append($input_policy_s1)
+$form.append($input_email)
+
+
+          var $input_submit  =     $("<div>", 
+         { class:"col-md-8 form-group"})
+
+          var $input_submit_i = $("<button>", 
+         { class:" btn btn-outline-success", type:'submit', text:"Submit", style:"margin-top: 14px;width: 21rem;border-radius: 3rem;",
+         onclick:"ShowQuote1();"}
+ )
+
+ 
+$input_submit.append($input_submit_i)
+$form.append($input_submit)
+
+
+        $row.append($form);
+        $mapCase.append($row);
+        $chatlog.append($mapCase);
+
+
+
+
+}
+
+else{
+
+
+      if(text.indexOf("ProposalFor") != -1)
+{
+
+
+$row.text(" Fill out this details.");
+
+
+   var $mapCase = $('<li>',          { id:"newform",class:"list-group-item",style:"background-color:white;max-width:90%;    border-radius: 21px;"});
+ 
+
+
+        var $row = $('<div>',          { id:"newform"});
+ 
+
+
+          var $form = $("<div>", {class:"row"}
+            )
+
+          $form.append("{% csrf_token %}");
+
+         var $text =$("<div>",
+          {class:"col-md-12",text:"General Detail"} )
+
+$form.append($text)
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:47px"})
+  
+          var $input_policy_i = $("<input>", 
+         {         id:"CustomerName", name:"CustomerName" ,placeholder:"Customer Name" }
+
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6", text:"Date of Birth"})
+  
+          var $input_policy_i = $("<input>", 
+         {   type:"date",      id:"DateOfBirth", name:"DateOfBirth" , }
+
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"number",     id:"PinCode", name:"PinCode" ,placeholder:"Pin code" }
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"text",     id:"AddressLine1", name:"AddressLine1" ,placeholder:"Address Line 1" }
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"text",     id:"PANCardNo", name:"PANCardNo" ,placeholder:"PAN Card" }
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"text",     id:"EngineNumber", name:"EngineNumber" ,placeholder:"Engine Number"}
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"text",     id:"ChassisNumber", name:"ChassisNumber" ,placeholder:"Chassis Number"}
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"text",     id:"VehicleDescription", name:"VehicleDescription" ,value:"test vehicle",placeholder:"Vehicle Description"}
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"text",     id:"ConstitutionOfBusiness", name:"ConstitutionOfBusiness" ,value:"Proprietorship",placeholder:"Vehicle Description"}
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+          var $input_pan1 = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold input_div",text:"PAN Details", style:"display:none;",})
+  
+          var $input_pan1_i = $("<input>", 
+         {class:"form-control input_input", style:"display:none;",
+         id:"PanDetails",type:"text", name:"PanDetails",placeholder:"Pan Details", value:"" }
+            )
+$input_pan1.append($input_pan1_i)
+$form.append($input_pan1)
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"text",     id:"GSTRegistrationStatus", name:"GSTRegistrationStatus" ,value:"TO BE COMMENCED",placeholder:"GST Registration Status"}
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+
+
+
+
+          var $input_policy = $("<div>", 
+         {class:"group col-md-6",style:"margin-top:24px"})
+  
+          var $input_policy_i = $("<input>", 
+         {    type:"text",     id:"GSTInNumber", name:"GSTInNumber" , placeholder:"GSTin Number"}
+            )
+	
+          var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_policy.append($input_policy_i)
+$input_policy.append($input_policy_s1)
+$form.append($input_policy)
+
+
+
+
+
+          var $input_type = $("<div>", 
+         {class:"group col-md-6",text:"GST Customer Type", style:"margin-top:24px",})
+  
+          var $input_type_i = $("<select>", 
+         { 
+         id:"GSTCustomerType",value:"RELATED PARTIES",type:"select", name:"GSTCustomerType",
+style:"width:264px;", }
+            )
+
+         var $choice1=$("<option>",{text:"GENERAL", value:"GENERAL"})
+                    
+$input_type_i.append($choice1);
+
+         var $choice2=$("<option>",{text:"EOU/STP/EHTP", value:"EOU/STP/EHTP"})
+
+$input_type_i.append($choice2);          
+         var $choice3=$("<option>",{text:"GOVERNMENT", value:"GOVERNMENT"})
+          
+$input_type_i.append($choice3);
+         var $choice4=$("<option>",{text:"OVERSEAS", value:"OVERSEAS"})
+          
+$input_type_i.append($choice4);
+         var $choice5=$("<option>",{text:"RELATED PARTIES", value:"RELATED PARTIES"})
+          
+$input_type_i.append($choice5);
+         var $choice6=$("<option>",{text:"SEZ", value:"SEZ"})
+          
+$input_type_i.append($choice6);
+         var $choice7=$("<option>",{text:"Individual", value:"Individual"})
+          
+$input_type_i.append($choice7);
+         var $choice8=$("<option>",{text:"Corporate", value:"Corporate"})
+          
+$input_type_i.append($choice8);
+         var $choice9=$("<option>",{text:"OTHERS", value:"OTHERS"})       
+$input_type_i.append($choice9);
+
+$input_type.append($input_type_i)
+
+var $input_policy_s1 = $("<span>", 
+         { class:"bar"})
+
+$input_type.append($input_type_i)
+$input_type.append($input_policy_s1)
+
+$form.append($input_type)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ var myEle = document.getElementById("reg_number");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+
+          var $input_policy = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:" display:none; margin-top:24px;font-weight:500!important font-weight-bold",text:"Registration Number" })
+
+          var $input_policy_i = $("<input>",
+         {style:"display:none; margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;color:#0a293e;border-radius:1.25rem;width:20rem",
+         class:"form-control ",
+         id:"reg_number", name:"reg_number" ,placeholder:"Registration number",
+         value:myEle_value,
+ }
+            )
+$input_policy.append($input_policy_i)
+$form.append($input_policy)
+
+
+
+
+
+ var myEle = document.getElementById("old_policy");
+    if(myEle){
+
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_veh  =     $("<div>",
+         { class:"col-md-6 form-group font-weight-bold",style:" display:none; font-weight:500!important", text:"Want to access an existing policy ?"} )
+
+          var $input_veh_i = $("<select>",
+         { class:"form-control ", type:"select" ,id:"old_policy", name:"old_policy" ,placeholder:"" ,required:"true",
+                  style:"display:none; margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;color:#0a293e;border-radius:1.25rem;width:20rem",
+
+         value:myEle_value,
+}
+            )
+
+          var $opt2 = $("<option>",
+         { class:"form-control", value:"true", text:"Yes"}
+            )
+          var $opt1 = $("<option>",
+         { class:"form-control", value:"false", text:"No"}
+            )
+$input_veh_i.append($opt2)
+$input_veh_i.append($opt1)
+
+$input_veh.append($input_veh_i)
+$form.append($input_veh)
+
+
+
+
+
+
+
+
+ var myEle = document.getElementById("state");
+    if(myEle){
+      myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_state = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"State" ,style:"display:none;margin-top:24px;font-weight:500!important "})
+
+          var $input_state_i = $("<input>",
+         {
+         style:"display:none; margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;color:#0a293e;border-radius:1.25rem;width:20rem",
+
+
+         id:"state", name:"state" ,placeholder:"State",
+         value:myEle_value,
+ }
+            )
+
+$input_state.append($input_state_i)
+$form.append($input_state)
+
+
+
+
+
+ var myEle = document.getElementById("reg_date");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+
+ var myEle = document.getElementById("reg_date");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+       var $input_reg_date1  =     $("<div>",
+         { class:"col-md-6 form-group font-weight-bold",style:"display:none; font-weight:500!important",text:"Purchase Date"})
+
+          var $input_reg_date_i1 = $("<input>",
+         { class:"form-control ",
+         value:myEle_value,
+ type:"date" ,id:"reg_date", name:"reg_date" ,placeholder:"First Registration Date" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem" }
+            )
+
+
+
+                      var $new_date = $("<input>",
+         { class:"form-control ", type:"text", id:"new_date", name:"new_date" ,placeholder:"preent new_date" ,style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; display:none;background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",  }
+            )
+$input_reg_date1.append($new_date)
+
+$input_reg_date1.append($input_reg_date_i1)
+$form.append($input_reg_date1)
+
+
+
+
+
+ var myEle = document.getElementById("radio1");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+
+ var myEle = document.getElementById("radio1");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_reg  =     $("<div>",
+         { class:"col-md-6 form-group row font-weight-bold",style:"font-weight:500!important; display:none; ", text:"Current registration type"})
+
+          var $input_radio = $("<label>",{ class:"radio", value:"true", text:"INDIVIDUAL"})
+          var $input_radio1 = $("<input>",{ type:"radio", value:"INDIVIDUAL", checked:"checked", name:"radio", id:"radio1",
+         value:myEle_value,
+})
+          var $input_radio2 = $("<span>",{class:"checkround"})
+
+
+          var $input_radio_i = $("<label>",{ class:"radio",  text:"Corporate"})
+          var $input_radio_i1 = $("<input>",{ type:"radio",value:"Corporate", name:"radio", id:"radio1",
+         value:myEle_value,
+})
+          var $input_radio_i2 = $("<span>",{  class:"checkround"})
+
+
+$input_radio.append($input_radio1)
+$input_radio.append($input_radio2)
+
+$input_radio_i.append($input_radio_i1)
+$input_radio_i.append($input_radio_i2)
+
+$input_reg.append($input_radio)
+$input_reg.append($input_radio_i)
+
+ $form.append($input_reg)
+
+
+
+
+
+ var myEle = document.getElementById("location");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_location  =     $("<div>",
+         { class:"col-md-6  form-group font-weight-bold" ,style:"display:none; font-weight:500!important",text:"RTO Location"})
+
+          var $input_location_i = $("<input>",
+         { class:"form-control ", autocomplete:"off",  type:"text" , value:"", id:"location", name:"location" ,placeholder:"RTO Location" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",  onfocus:"rto_suggestions();",
+         value:myEle_value,
+}
+            )
+
+
+ var myEle = document.getElementById("rto_code");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+        var $input_locationc_i = $("<input>",
+         { class:"form-control ", autocomplete:"off", type:"text", id:"rto_code", name:"rto_code" ,placeholder:"RTO Location Code" ,style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+         value:myEle_value,
+  }
+            )
+
+
+
+ var myEle = document.getElementById("rto_city_code");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+        var $input_locationcc_i = $("<input>",
+         { class:"form-control ", autocomplete:"off", type:"text", id:"rto_city_code", name:"rto_city_code" ,placeholder:"RTO Location Code" ,style:"display:none;  margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+         value:myEle_value,
+  }
+            )
+
+
+
+ var myEle = document.getElementById("rto_state_code");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+        var $input_locationsc_i = $("<input>",
+         { class:"form-control ", autocomplete:"off", type:"text", id:"rto_state_code", name:"rto_state_code" ,placeholder:"RTO Location Code" ,style:"display:none;  margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+         value:myEle_value,
+  }
+            )
+
+
+
+
+$input_location.append($input_location_i)
+$input_location.append($input_locationc_i)
+$input_location.append($input_locationcc_i)
+$input_location.append($input_locationsc_i)
+$form.append($input_location)
+
+
+
+
+
+
+          var $input_model  =     $("<div>",
+         { class:"col-md-6 form-group font-weight-bold",style:" margin-top:24px;font-weight:500!important font-weight-bold;display:none; font-weight:500!important",text:"Two Wheeler Model"})
+
+
+ var myEle = document.getElementById("model");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_model_i = $("<input>",
+         { class:"form-control  ", autocomplete:"off",  id:"model", name:"model" ,type:"text",placeholder:"Two wheeler Model" ,required:"true",
+         style:"margin-top: 4px; display:none; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", onfocus:"model_suggestions();",
+         value:myEle_value,
+}
+            )
+         $input_model .append($input_model_i);
+$form.append($input_model)
+
+          var $input_modelc  =     $("<div>",
+         { class:"col-md-6 form-group font-weight-bold", autocomplete:"off", style:"margin-top:24px;font-weight:500!important font-weight-bold;display:none;",text:"Two Wheeler model code"})
+
+
+ var myEle = document.getElementById("modelc");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+            var $input_modelc_i = $("<input>",
+         { class:"form-control  ", id:"modelc", name:"modelc" , autocomplete:"off", placeholder:"Two wheeler Model code" ,style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+         value:myEle_value,
+}
+            )
+         $input_modelc .append($input_modelc_i);
+$form.append($input_modelc)
+
+
+
+
+
+
+
+
+
+
+          var $input_make  =     $("<div>",
+         { class:"col-md-6 form-group font-weight-bold",style:" display:none; margin-top:24px;font-weight:500!important font-weight-bold;font-weight:500!important",text:"Two Wheeler Make"})
+
+
+ var myEle = document.getElementById("make");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_make_i = $("<input>",
+         { class:"form-control  ", autocomplete:"off",  id:"make", name:"make" ,type:"text",placeholder:"Two wheeler Make" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem", onfocus:"make_suggestions();",value:myEle_value,
+}
+            )
+         $input_make .append($input_make_i);
+$form.append($input_make)
+
+          var $input_makec  =     $("<div>",
+         { class:"col-md-6 form-group font-weight-bold", autocomplete:"off", style:"display:none; margin-top:24px;font-weight:500!important font-weight-bold",style:" font-weight:500!important; display:none;",text:"Two Wheeler make code"})
+
+
+ var myEle = document.getElementById("makec");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+            var $input_makec_i = $("<input>",
+         { class:"form-control  ", value:"31", id:"makec", name:"makec" , autocomplete:"off", placeholder:"Two wheeler Make code" ,style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",value:myEle_value,
+}
+            )
+         $input_makec .append($input_makec_i);
+$form.append($input_makec)
+
+
+
+
+
+
+
+
+
+          var $input_price  =     $("<div>",
+         { class:"col-md-6 form-group font-weight-bold",style:"font-weight:500!important; display:none; ", text:"Ex-showroom price",value:myEle_value,
+})
+
+
+ var myEle = document.getElementById("price");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_price_i = $("<input>",
+         { class:"form-control ", autocomplete:"off",  type:"text" ,id:"price", name:"price" ,placeholder:"Ex-showroom price" ,required:"true",style:" margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+                  value:myEle_value,
+}
+            )
+
+$input_price.append($input_price_i)
+$form.append($input_price)
+
+
+
+
+
+
+
+
+
+
+
+          var $input_number  =     $("<div>",
+         { class:"col-md-6  form-group font-weight-bold" ,style:"display:none; font-weight:500!important;",text:"Mobile Number",
+                  value:myEle_value,
+})
+
+
+ var myEle = document.getElementById("number");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_number_i = $("<input>",
+         { class:"form-control ", type:"number" ,default:"99999", value:"", id:"number", name:"number" ,placeholder:"Mobile number" ,
+         style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+                  value:myEle_value,
+}
+            )
+
+
+$input_number.append($input_number_i)
+$form.append($input_number)
+
+
+          var $input_email  =     $("<div>",
+         { class:"col-md-6 form-group font-weight-bold",style:"display:none; font-weight:500!important;",text:"Email",})
+
+
+ var myEle = document.getElementById("email");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+          var $input_email_i = $("<input>",
+         { class:"form-control ", type:"email" ,default:"s@k.c", id:"email", name:"email" ,placeholder:"Email" ,style:"display:none; margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem;",
+         value:myEle_value,
+         }
+            )
+
+
+$input_email.append($input_email_i)
+$form.append($input_email)
+
+
+
+
+
+
+
+          var $input_submit  =     $("<div>",
+         { class:"col-md-8 form-group"})
+
+          var $input_submit_i = $("<button>",
+         { class:" btn btn-primary my_button", type:'submit', text:"Submit!",
+         onclick:"ShowProposal();"}
+ )
+
+
+$input_submit.append($input_submit_i)
+$form.append($input_submit)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $row.append($form);
+        $mapCase.append($row);
+        $chatlog.append($mapCase);
+
+
+
+}
+
+
+ else{
+
+if(text.indexOf("xxxx") !== -1)
+{
+
+
+
+        $row.append($form);
+        $mapCase.append($row);
+        $chatlog.append($mapCase);
+
+
+
+
+      }
+      else
+      {
+        if(text=="Nominee")
+        {
+
+        var $row1 = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $row1.text("Nominee Detail");
+        $chatlog.append($row1);
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $chatlog.append($row);
+
+
+
+
+          var $form = $('<div>');
+
+         $form.append("{% csrf_token %}");
+
+
+         var $text =$("<kbd>",
+          {text:"Nominee Detail" ,style:"font-size:92%; margin-left:17px; border-radius:5.2rem; padding:0.2rem 3.4rem;"})
+
+          var $input_city = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Poicy Number" ,style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_city_i = $("<input>",
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+class:"form-control",
+         id:"policy_number_nominee", name:"policy_number_nominee" ,placeholder:"Poicy Number" }
+            )
+
+
+          var $input_name = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Nominee Name" ,style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_name_i = $("<input>",
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+         class:"form-control",
+         id:"nominee_name", name:"nominee_name" ,placeholder:"Nominee Name" }
+            )
+
+
+          var $input_relation = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Relationship" ,style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_relation_i = $("<input>",
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+         class:"form-control",
+         id:"relation", name:"relation" ,placeholder:"Relationship" }
+            )
+
+          var $button = $('<button>',{ class:"btn btn-primary my_button", text:"Submit!", onclick:"Nominee();"})
+
+          $form.append($text);
+
+          $input_city.append($input_city_i);
+          $form.append($input_city);
+
+
+          $input_name.append($input_name_i);
+          $form.append($input_name);
+
+          $input_relation.append($input_relation_i);
+          $form.append($input_relation);
+          $form.append($button);
+          $row.append($form);
+          $chatlog.append($row);
+}
+else
+{
+
+
+        if(text=="ContactDetails")
+        {
+
+        var $row1 = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $row1.text("Fill out this details.")
+        $chatlog.append($row1);
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $chatlog.append($row);
+
+
+          var $form = $('<div>');
+
+         $form.append("{% csrf_token %}");
+
+
+         var $text =$("<kbd>",
+          {text:"Contact Detail" ,style:"font-size:92%; margin-left:17px; border-radius:5.2rem; padding:0.2rem 3.4rem;"})
+
+          var $input_city = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Your Policy Number" , style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_city_i = $("<input>",
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+class:"form-control",
+         id:"policy_number_contact", name:"policy_number_contact" ,placeholder:"Policy Number" }
+            )
+
+
+          var $input_name = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Contact Number" ,style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_name_i = $("<input>",
+         {class:"form-control",
+style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+
+         id:"number_user", name:"number_user" ,placeholder:"Contact Number" }
+            )
+
+
+          var $input_relation = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Address" ,style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_relation_i = $("<input>",
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+class:"form-control",
+         id:"address", name:"address" ,placeholder:"Address" }
+            )
+
+          var $button = $('<button>',{ class:"btn btn-primary my_button", text:"Submit!", onclick:"Address();"})
+
+          $form.append($text);
+
+          $input_city.append($input_city_i);
+          $form.append($input_city);
+
+
+          $input_name.append($input_name_i);
+          $form.append($input_name);
+
+          $input_relation.append($input_relation_i);
+          $form.append($input_relation);
+
+          $form.append($button);
+
+          $row.append($form);
+          $chatlog.append($row);
+
+
+
+
+
+
+
+}
+else
+{
+
+
+
+
+        if(text=="FileClaim")
+        {
+
+
+
+ var myEle = document.getElementById("policy_number_form");
+    if(myEle){
+        myEle.remove();
+    }
+
+
+ var myEle = document.getElementById("policy_number");
+    if(myEle){
+      myEle.attr("policy_number", myEle_value);
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;", id:"policy_number_form"});
+        $row.text("Please mention your policy number in xxxx/xxxxxxxxxx/xx/xxxxxxxxxx (4-10-2-10) format");
+        $chatlog.append($row);
+
+
+
+
+        var $row1 = $('<div>',          { id:"generaldetail"});
+
+
+
+          var $form = $("<div>",
+            )
+
+          $form.append("{% csrf_token %}");
+
+         var $text =$("<kbd>",
+          {text:"General Detail" ,style:"font-size:92%; margin-left:17px; border-radius:5.2rem; padding:0.2rem 3.4rem;"})
+
+
+          var $input_city = $("<div>",
+         {class:"input_div form-group font-weight-bold",text:"Please mention your policy number in xxxx/xxxxxxxxxx/xx/xxxxxxxxxx (4-10-2-10) format"})
+
+          var $input_city_i = $("<input>",
+         {class:"form-control input_input policy_number",id:"policy_number", name:"policy_number" ,placeholder:"Policy Number" }
+            )
+
+
+
+$input_city.append($input_city_i)
+$form.append($input_city)
+
+
+
+          var $button = $('<button>',{ class:"btn btn-primary my_button" ,text:"Submit!", onclick:"FileClaim();"})
+
+          $form.append($button);
+
+
+        $row1.append($form)
+        $chatlog.append($row);
+        $chatlog.append($row1);
+
+  }
+
+  if(text=="LogInAccount")
+
+  {
+
+        var $row1 = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $row1.text("Fill out this details.")
+        $chatlog.append($row1);
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+
+
+          var $form = $('<div>');
+
+         $form.append("{% csrf_token %}");
+
+
+         var $text =$("<kbd>",
+          {text:"Login!" ,style:"font-size:92%; margin-left:17px; border-radius:5.2rem; padding:0.2rem 3.4rem;"})
+
+          var $input_city = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"User name" , style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_city_i = $("<input>",
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+class:"form-control",required:"true",id:"user_name", name:"user_name" ,placeholder:"User Name" }
+            )
+
+
+          var $input_name = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Password" ,style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_name_i = $("<input>",
+         {class:"form-control", type:"password",
+style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+
+         required:"true",id:"password", name:"password" ,placeholder:"Password" }
+            )
+
+
+          var $input_password = $("<div>",
+         {style:"margin-top:10px"})
+
+          var $input_password_i = $("<button>",
+         { class:"btn btn-link",
+
+         id:"forget_password",name:"forget_password",text:"Forgot password", onclick:'createRow("Kindly provide your Mobile Number to receive OTP for one time sign in. You can then change your password using this OTP.");'}
+            )
+
+          var $button = $('<button>',{ class:"btn btn-primary my_button",onclick:"log_in_me();", type:"submit", text:"Submit!",style:"position: inherit"})
+
+          $form.append($text);
+
+          $input_city.append($input_city_i);
+          $form.append($input_city);
+
+
+          $input_name.append($input_name_i);
+          $form.append($input_name);
+
+          $input_password.append($input_password_i);
+          $form.append($input_password);
+
+          $form.append($button);
+
+          $row.append($form);
+          $chatlog.append($row);
+
+}
+else
+
+{
+
+        if(text=="Kindly provide your Mobile Number to receive OTP for one time sign in. You can then change your password using this OTP.")
+        {
+
+        var $row1 = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $row1.text("Kindly provide your Mobile Number to receive OTP for one time sign in. You can then change your password using this OTP.")
+        $chatlog.append($row1);
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+
+
+          var $form = $('<div>');
+
+         $form.append("{% csrf_token %}");
+
+
+         var $text =$("<kbd>",
+          {text:"Forgot Password" ,style:"font-size:92%; margin-left:17px; border-radius:5.2rem; padding:0.2rem 3.4rem;"})
+
+          var $input_city = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"User name *" , style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_city_i = $("<input>",
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+class:"form-control",required:"true",
+         id:"user_name_forget", name:"user_name_forget" ,placeholder:"User Name" }
+            )
+
+
+          var $input_name = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Mobie Number *" ,style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_name_i = $("<input>",
+         {class:"form-control", type:"number",
+style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+
+        required:"true", id:"mobile_number", name:"mobile_number" ,placeholder:"Mobile Number" }
+            )
+
+          var $button = $('<button>',{ class:"btn btn-primary my_button",type:"submit", text:"Submit!", onclick:"forget_password();"})
+
+          $form.append($text);
+
+          $input_city.append($input_city_i);
+          $form.append($input_city);
+
+
+          $input_name.append($input_name_i);
+          $form.append($input_name);
+
+          $form.append($button);
+
+          $row.append($form);
+          $chatlog.append($row);
+
+}
+else
+
+{
+
+        if(text.indexOf("Please enter a otp which is sent to your Registred mobile number.")!== -1)
+        {
+
+        var $row1 = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+        $row1.text(text)
+        $chatlog.append($row1);
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+
+
+          var $form = $('<div>');
+
+         $form.append("{% csrf_token %}");
+
+
+         var $text =$("<kbd>",
+          {text:"Forget Password!" ,style:"font-size:92%; margin-left:17px; border-radius:5.2rem; padding:0.2rem 3.4rem;"})
+
+          var $input_city = $("<div>",
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"OTP *" , style:"margin-top:24px;font-weight:500!important "})
+
+          var $input_city_i = $("<input>",
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem",
+          class:"form-control", type:"number",required:"true",id:"otp", name:"otp" ,placeholder:"Enter you OTP here..." }
+            )
+
+          var $button = $('<button>',{ class:"btn btn-primary my_button",type:"submit", text:"Submit!", onclick:"createRow('You can create new password by entering new password below');"})
+
+          $form.append($text);
+
+          $input_city.append($input_city_i);
+          $form.append($input_city);
+
+          $form.append($button);
+
+          $row.append($form);
+          $chatlog.append($row);
+}
+
+else{
+
+if(text.indexOf("You can create new password by entering new password below")!== -1)
+{
+
+var $row1 = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+$row1.text("You can create new password by entering new password below:")
+$chatlog.append($row1);
+
+  var $form = $('<div>');
+
+ $form.append("{% csrf_token %}");
+
+
+ var $text =$("<kbd>",
+  {text:"New Password" ,style:"font-size:92%; margin-left:17px; border-radius:5.2rem; padding:0.2rem 3.4rem;"})
+
+  var $input_city = $("<div>",
+ {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"New Password" , style:"margin-top:24px;font-weight:500!important "})
+
+  var $input_city_i = $("<input>",
+ { class:"form-control input_input", type:"password",required:"true",id:"new_password", name:"new_password" ,placeholder:"Enter you New Password here..." }
+    )
+
+  var $input_pass = $("<div>",
+ {class:"form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Re-enter New Password" , style:"margin-top:24px;font-weight:500!important "})
+
+  var $input_pass_i = $("<input>",
+ { class:"form-control input_input", type:"password",required:"true",id:"confirm_password", name:"confirm_password" ,placeholder:"Enter password again..." }
+    )
+
+  var $button = $('<button>',{ class:"btn btn-primary my_button",type:"submit", text:"Submit!", onclick:"update_password();"})
+
+  $form.append($text);
+
+  $input_city.append($input_city_i);
+  $form.append($input_city);
+
+  $input_pass.append($input_pass_i);
+  $form.append($input_pass);
+
+  $form.append($button);
+
+  $row.append($form);
+  $chatlog.append($row);
+}
+
+else{
+
+
+
+if(text == "FileClaimForm")
+{
+
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+
+
+
+
+
+
+          var myEle = document.getElementById("policy_number");
+    if(myEle){
+        myEle_value = myEle.value; myEle.id = "";
+    }
+
+
+
+          var $form = $("<div>", { id:"generaldetail"} 
+            )
+            
+          $form.append("{% csrf_token %}");
+
+
+          var $input_city = $("<div>", 
+         {id:"policy_number_case", class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold; ",
+        })
+  
+          var $input_city_i = $("<textarea>", 
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;color:#0a293e;border-radius:1.25rem;width:20rem;height: 163px;", 
+
+         id:"input_claim", name:"input_claim" ,placeholder:"Enter your claim here" }
+            )
+
+
+
+$input_city.append($input_city_i)
+$form.append($input_city);
+
+var $input_city = $("<div>", 
+         {class:"col-md-6 form-group input_div font-weight-bold"})
+  
+          var $input_city_i = $("<button>", 
+         {class:"btn btn-primary my_button", 
+
+         placeholder:"Policy Number", onclick:"submit_file_claim();", text:"Submit" }
+            )
+
+
+
+$input_city.append($input_city_i)
+          $form.append($input_city);
+
+
+$row.append($form);
+$chatlog.append($row);
+
+
+
+}
+ 
+ else{
+ 
+ 
+ 
+ if(text == "BTLOptions")
+ {
+ 
+  var $form = $("<div>", { id:"generaldetail", text:"Would you like to book appointment with a garage?"} 
+            )
+
+          $form.append("{% csrf_token %}");
+
+
+
+          var $input_city = $("<div>", 
+         {class:"col-md-6 form-group input_div font-weight-bold"})
+  
+          var $input_city_i = $("<button>", 
+         {class:"btn btn-primary my_button", 
+
+         id:"policy_number", name:"policy_number", onclick:"createRow('garage');",text:"Yes" }
+            )
+
+
+
+$input_city.append($input_city_i)
+          $form.append($input_city);
+
+
+
+var $input_city = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold; ", 
+})
+  
+          var $input_city_i = $("<button>", 
+         {class:"btn btn-light my_button_light", 
+
+         id:"policy_number", name:"policy_number" ,placeholder:"Policy Number", onclick:"createRow('Okay we have taken up your claim, Thanks for your valuable time');", text:"No, Thanks" }
+            )
+
+
+
+$input_city.append($input_city_i)
+          $form.append($input_city);
+
+
+
+
+
+
+ 
+
+
+
+          $row.append($form);
+          $chatlog.append($row);
+
+
+
+}
+             else{
+
+if(text == "ClaimLoss")
+{
+
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+
+var $form = $("<div>", { id:"generaldetail"} 
+            )
+
+          $form.append("{% csrf_token %}");
+
+
+          var $input_city = $("<div>", 
+         {class:"col-md-6 custom-file input_div form-group font-weight-bold", text:"Sorry to hear about that, would you like to attach any documents/photos along?"});
+  
+
+
+
+$form.append($input_city);
+
+
+          var $input_city = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold; "})
+  
+          var $input_city_i = $("<button>", 
+         {class:"btn btn-primary my_button", 
+
+         id:"policy_number", name:"policy_number" ,placeholder:"Policy Number", onclick:"createRow('FileUploadForClaim');", text:"Yes" }
+            )
+
+
+
+$input_city.append($input_city_i)
+          $form.append($input_city);
+
+
+
+
+          var $input_city = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold input_div"});
+  
+          var $input_city_i = $("<button>", 
+         {class:"btn btn-light my_button_light", id:"policy_number", name:"policy_number" ,placeholder:"Policy Number", onclick:"createRow('BTLOptions');",
+         text:"No Thanks" 
+        }
+            );
+
+
+
+$input_city.append($input_city_i);
+          $form.append($input_city);
+
+          $row.append($form);
+          $chatlog.append($row);
+
+
+}
+             else{
+
+if(text == "FileUploadForClaim")
+{
+
+
+        var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+
+var $form = $("<div>", { id:"generaldetail"} 
+            )
+
+          $form.append("{% csrf_token %}");
+
+
+          var $input_city = $("<div>", 
+         {class:"col-md-6 custom-file input_div form-group font-weight-bold",
+         text:"Chose documents/photos to attach"})
+  
+
+
+
+          var $input_city_i = $("<input>", 
+         { 
+         type:"file", id:"customFile",
+         name:"policy_number" }
+            )
+
+
+
+$input_city.append($input_city_i)
+$form.append($input_city);
+
+
+          var $input_city = $("<div>", 
+         {class:"col-md-6 input_div form-group font-weight-bold"})
+  
+          var $input_city_i = $("<button>", 
+         {class:"btn btn-primary my_button", 
+
+         id:"policy_number", name:"policy_number" ,placeholder:"Policy Number", onclick:"createRow('BTLOptions');", text:"Submit" }
+            )
+
+
+
+$input_city.append($input_city_i)
+          $form.append($input_city);
+
+          $row.append($form);
+          $chatlog.append($row);
+
+
+
+}
+             else{
+
+
+                  if(text == "garage")
+{   
+          var $row = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+          $row.text("Book appointment with:")
+
+          var $input_garage = $("<div>",{class:"col-md-6 input_div form-group font-weight-bold"})
+  
+          var $garage_button=$('<button>',{id:"for_garage",name:"for_garage", class:"btn btn-primary my_button", text:"Garage", onclick:"createRow('for_garage');"});
+
+$input_garage.append($garage_button);
+
+$row.append($input_garage);
+
+          var $input_branch = $("<div>",{class:"col-md-6 input_div form-group font-weight-bold"})
+  
+          var $branch_button=$('<button>',{id:"for_branch",name:"for_branch", class:"btn btn-primary my_button", text:"Branch",onclick:"createRow('for_branch');"});
+            
+$input_branch.append($branch_button);
+$row.append($input_branch);
+    
+        $chatlog.append($row);
+
+}
+             else{
+
+
+$row.text(text);
+        $chatlog.append($row);
+             }
+            }
+          }
+
+      }
+          }     
+ }     
+      }
+    }
+  }
+}
+}
+}
+}
+}
+}
+ }
+ }     }
+      }
+      }
+      }
+      }
+      }
+}
+}
+}
+} }
+ 
+function claim_taken_up()
+{
+  
+  var inputDataObj = {
+          'you': document.getElementById("policy_number").value,
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/ticket/",
+          data: {"data": JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            // Clear the input field
+            $input.val('');
+
+createRow('I have taken in your claim, it is forwarded to concerned department, your ticket number is: '+statement.ticket);
+
+}
+)
+
+}
+
+
+function log_in_me(){
+  var inputDataObj = {
+  'user_name': document.getElementById("user_name").value,
+  'password': document.getElementById("password").value,
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/user_login/",
+          data: {"data": JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+createRow(statement.status);
+       
+}
+)
+}
+
+
+
+function update_password() {
+  new_pass = document.getElementById("new_password").value
+  confirm_pass = document.getElementById("confirm_password").value
+  if (new_pass != confirm_pass)
+  {
+    createRow("Passwords Not Matched");
+  }
+  var inputDataObj = {
+  'user_name_forget': document.getElementById("user_name_forget").value,
+  'confirm_password': new_pass,
+        }
+ var $submit = $.ajax({
+   type: 'GET',
+   url:"/update_password/",
+   data: {"data": JSON.stringify(inputDataObj)},
+   contentType: 'application/json'
+   });
+
+ $submit.done(function(statement) {
+     // Clear the input field
+     $input.val('');
+     createRow(statement.status);
+    
+     // Scroll to the bottom of the chat interface
+ });
+
+
+
+}
+function forget_password() {
+  var inputDataObj = {
+  'user_name_forget': document.getElementById("user_name_forget").value,
+  'mobile_number': document.getElementById("mobile_number").value,
+        }
+ var $submit = $.ajax({
+   type: 'GET',
+   url:"/forget_password/",
+   data: {"data": JSON.stringify(inputDataObj)},
+   contentType: 'application/json'
+   });
+
+ $submit.done(function(statement) {
+     // Clear the input field
+     $input.val('');
+     createRow(statement.status);
+    
+     // Scroll to the bottom of the chat interface
+ });
+
+
+
+}
+
+
+
+
+
+
+function reset_id() {
+
+ var $submit = $.ajax({
+   type: 'GET',
+   url: "",
+   });
+
+ $submit.done(function(statement) {
+
+     // Clear the input field
+     $input.val('');
+     createRow("Your Password has been updated. ");
+     // Scroll to the bottom of the chat interface
+ });
+
+
+
+}
+
+
+
+
+
+      function submitInput(inputData) {
+
+        // Display the user's input on the web page
+        userRow(inputData);
+
+        var inputDataObj = {
+          'text': inputData
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/clear_all",
+          data: JSON.stringify(inputDataObj),
+          contentType: 'application/json'
+        });
+
+        var $submit = $.ajax({
+          type: 'POST',
+          url: chatterbotUrl,
+          data: JSON.stringify(inputDataObj),
+         contentType: 'application/json'
+        });
+
+        console.log("inputDataObjText", inputDataObj.text)
+
+        $submit.done(function(statement) {
+
+            createRow(statement.text);
+            console.log("statement.text: "+statement.text)
+            // Clear the input field
+            $input.val('');
+
+            // Scroll to the bottom of the chat interface
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+        });
+
+        $submit.fail(function() {
+          console.log("submit.fail")
+        });
+      }
+
+      $sayButton.click(function() {
+
+        var inputData = {
+          'text': $input.val()
+        }
+        console.log("sayButton.click", inputData.text);
+        submitInput(inputData.text);
+      });
+
+      $input.keydown(function(event) {
+        // Submit the input when the enter button is pressed
+        if (event.keyCode == 13) {
+
+        var inputData = {
+          'text': $input.val()
+        }
+
+          submitInput(inputData.text);
+        console.log("keydown", inputData.text) }
+      });
+
+    </script>
+
+
+
+<script type="text/javascript">
+  
+function Feedback() {
+ 
+
+
+        var inputDataObj = {
+          'relation': document.getElementById("feedback_mail").value,
+          'nominee_name': document.getElementById("feedback_text").value,
+          'you': document.getElementById("feedback_name").value,
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/feedback/",
+          data: {"data": JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            // Clear the input field
+            $input.val('');
+
+            createRow("Thanks for giving us feedback, It was a nice experience  to talk you!");
+            // Scroll to the bottom of the chat interface
+        });
+
+
+
+}
+
+
+function check_number() {
+    var x, text;
+    // Get the value of the input field with id="numb"
+    x = document.getElementById("contact_number").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (isNaN(x) || x < 6000000000 || x > 9999999999) {
+createRow("Entered Mobile number is incorrect.")
+      }
+        else{
+    createRow("Your appointment is booked.")
+  }
+}
+
+  
+
+
+
+
+function confirmIt(){
+time_input = document.getElementById("timeInput").value;
+hrs = time_input.slice(0, 2);
+min = time_input.slice(3, 5);
+AM = time_input.slice(5, 7);
+console.log(":"+time_input);
+if(hrs > 17 || hrs < 10 )
+{
+alert('The time must be between 10:00 AM to 5:00 PM');
+}
+else{
+createRow('NameAppoint')
+}
+$chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+}
+
+  
+function FileClaim() {
+  
+
+
+        var inputDataObj = {
+          'you': document.getElementById("policy_number").value,
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/file_claim/",
+          data: {"data": JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            // Clear the input field
+            $input.val('');
+            if (statement.u_name == undefined)
+            {
+              createRow("The entered policy number is invailid.");
+            }
+            else
+            {
+            createRow(statement.u_name + ", your 2 wheeler "+ statement.u_bike  +" is insured with us. Enter your claim here, So we can proceed further.");
+            createRow("FileClaimForm");
+            // Scroll to the bottom of the chat interface
+          }
+        });
+
+
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+
+}
+
+
+function submit_file_claim() {
+
+
+        var inputDataObj = {
+          'input_claim': document.getElementById("input_claim").value,
+          'you': document.getElementsByClassName("policy_number")[document.getElementsByClassName("policy_number").length-1].value,
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/submit_file_claim/",
+          data: {"data": JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            // Clear the input field
+            $input.val('');
+            createRow('I have taken in your claim, it is forwarded to concerned department, your ticket number is: '+statement.ticket);
+
+          createRow('ClaimLoss');
+            });
+
+
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+
+
+}
+
+
+
+
+
+
+
+  
+function Nominee() {
+ 
+
+
+        var inputDataObj = {
+          'relation': document.getElementById("relation").value,
+          'nominee_name': document.getElementById("nominee_name").value,
+          'you': document.getElementById("policy_number_nominee").value,
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/nominee/",
+          data: {"data": JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            // Clear the input field
+            $input.val('');
+            if (statement.name == "NotFound"){
+              createRow("The given Policy Number is not Found")
+            }else{
+                        createRow("Your nominee details has been changed");
+                      }
+            // Scroll to the bottom of the chat interface
+        });
+
+
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+
+}
+
+
+  
+function Address() {
+ 
+
+
+        var inputDataObj = {
+          'relation': document.getElementById("address").value,
+          'nominee_name': document.getElementById("number_user").value,
+          'you': document.getElementById("policy_number_contact").value,
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/address/",
+          data: {"data": JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            // Clear the input field
+            $input.val('');
+            if (statement.name == "NotFound"){
+              createRow("The given Policy Number is not Found")
+            }else{
+            createRow("Your address has been changed");
+          }
+            // Scroll to the bottom of the chat interface
+        });
+
+
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+
+}
+
+</script>
+
+
+
+<script>
+
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+      b.setAttribute("onclick", "exprice_of_"+this.name+"('"+arr[i]+"');");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'"+ "onclick=exprice_of_"+this.name+"('"+arr[i]+"');"+">";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+
+
+function make_suggestions(){
+
+
+var make_input = document.getElementById("make");
+
+        var inputDataObj = {
+          'text': inputData
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/makes",
+          data: JSON.stringify(inputDataObj),
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            console.log("makes: "+statement.makes)
+            // Clear the input field
+            $input.val('');
+            
+            autocomplete(make_input, statement.makes);
+
+            // Scroll to the bottom of the chat interface
+        });
+
+}
+
+
+function model_suggestions(){
+
+var model_input = document.getElementById("model");
+
+        var inputDataObj = {
+          'text': inputData
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/models",
+          data: JSON.stringify(inputDataObj),
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            console.log("models: "+statement.models)
+            // Clear the input field
+            $input.val('');
+            
+            autocomplete(model_input, statement.models);
+
+            // Scroll to the bottom of the chat interface
+        });
+
+
+}
+
+
+function ShowQuote1(){
+
+        var inputDataObj = {
+             'old_policy' : document.getElementById("old_policy").value,
+            "price": document.getElementById("price").value,
+            "radio1": document.getElementById("radio1").value,
+            "rto_code": document.getElementById("rto_code").value,
+            "rto_state_code":document.getElementById("rto_state_code").value,
+            "rto_city_code":document.getElementById("rto_city_code").value,
+            "new_date": document.getElementById("new_date").value,
+            "modelc": document.getElementById("modelc").value,
+            "reg_number":document.getElementById("reg_number").value,
+            "reg_date": document.getElementById("reg_date").value,
+            "email":document.getElementById("email").value,
+            "number":document.getElementById("number").value,
+        }
+
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/quote/",
+          data: {data: JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+
+        createRow("Wait a moment, Getting your information :)");
+
+        $submit.done(function(statement) {
+p=statement;
+
+
+
+
+var result = "The response is as follows: \n";
+for (var key in p) {
+    if (p.hasOwnProperty(key)) {
+        resul =key + " = " + p[key] +", \n";
+        result = result.concat(resul);
+    }
+}
+      var $chatlog = $('.js-chat-log');
+        var $row1 = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+      $para = $("<pre>");
+      $para.append(result);
+        $row1.append($para);
+      $chatlog.append($row1);
+            // Scroll to the bottom of the chat interface
+
+
+
+        var $form = $('<li>', { class:"list-group-item", style:"background-color:transparent;"});
+
+          var button = $("<button>",
+         { type:'submit',
+           name:'button',
+           class:"list-group-item",
+           text: "Go for proposal",
+           width:"100%",
+           onclick:"createRow('ProposalFor');"}
+
+
+
+);
+        $form.append(button);
+        $chatlog.append($form);
+
+
+
+
+
+
+
+        });
+}
+
+
+
+function ShowProposal(){
+
+        var inputDataObj = {
+    'CustomerName' : document.getElementById("CustomerName").value,
+            "DateOfBirth": document.getElementById("DateOfBirth").value,
+            "PinCode": document.getElementById("PinCode").value,
+            "AddressLine1": document.getElementById("AddressLine1").value,
+"PANCardNo":document.getElementById("PANCardNo").value,
+"EngineNumber":document.getElementById("EngineNumber").value,
+            "ChassisNumber": document.getElementById("ChassisNumber").value,
+            "VehicleDescription": document.getElementById("VehicleDescription").value,
+"ConstitutionOfBusiness":document.getElementById("ConstitutionOfBusiness").value,
+            "PanDetails": document.getElementById("PanDetails").value,
+            "GSTRegistrationStatus": document.getElementById("GSTRegistrationStatus").value,
+            "GSTInNumber":document.getElementById("GSTInNumber").value,
+            "GSTCustomerType":document.getElementById("GSTCustomerType").value,
+            'OldPolicy' : document.getElementById("old_policy").value,
+             "ExShowRoomPrice": document.getElementById("price").value,
+            "CustomerType": document.getElementById("radio1").value,
+            "RTOLocationCode": document.getElementById("rto_code").value,
+"StateCode":document.getElementById("rto_state_code").value,
+"CityCode":document.getElementById("rto_city_code").value,
+            "VehicleModelCode": document.getElementById("modelc").value,
+"RegistrationNumber":document.getElementById("reg_number").value,
+            "reg_date": document.getElementById("reg_date").value,
+            "new_date":document.getElementById("new_date").value,
+            "Email":document.getElementById("email").value,
+            "MobileNumber":document.getElementById("number").value,
+        }
+
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/proposal_creation/",
+          data: {data: JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+        createRow("Wait a moment, Getting your information :)");
+
+        $submit.done(function(statement) {
+p=statement;
+
+
+
+
+var result = "The response is as follows: \n";
+for (var key in p) {
+    if (p.hasOwnProperty(key)) {
+        resul =key + " = " + p[key] +", \n";
+        result = result.concat(resul);
+    }
+}
+      var $chatlog = $('.js-chat-log');
+        var $row1 = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+      $para = $("<pre>");
+      $para.append(result);
+        $row1.append($para);
+      $chatlog.append($row1);
+            // Scroll to the bottom of the chat interface
+
+
+
+        var $form = $('<li>', { class:"list-group-item", style:"background-color:white;"});
+
+          var button = $("<button>",
+         { type:'submit',
+           name:'button',
+           class:"list-group-item my_button btn-primary",
+           text: "Submit!",
+           onclick:"submitInput('')",}
+
+);
+        $form.append(button);
+        $chatlog.append(form);
+
+
+        });
+}
+
+
+
+function rto_suggestions(){
+
+
+        var inputDataObj = {
+          'text': inputData
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/rtos",
+          data: JSON.stringify(inputDataObj),
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+
+            console.log("rtos: "+statement.rtos)
+            // Clear the input field
+            
+var model_input = document.getElementById("location");
+            autocomplete(model_input, statement.rtos);
+
+            // Scroll to the bottom of the chat interface
+        });
+
+
+}
+
+function exprice_of_model(value) {
+ 
+        var inputDataObj = {
+          'make': value
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/exprice_of/",
+          data: {data: JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+
+        $submit.done(function(statement) {
+
+            
+             model_input = document.getElementById("model");
+             model_input.value = statement.model;
+             model_input = document.getElementById("make");
+             model_input.value = statement.make;
+             model_input = document.getElementById("modelc");
+             model_input.value = statement.makec;
+             model_input = document.getElementById("makec");
+             model_input.value = statement.modelc;
+             model_input = document.getElementById("price");
+            model_input.value = statement.exprice;
+
+          var model_input = document.getElementById("reg_date");
+
+
+          d = new Date().toLocaleDateString('en-GB', {  
+  day : 'numeric',
+  month : 'numeric',
+  year : 'numeric'
+});
+document.getElementById("new_date").value = d;
+          
+
+
+
+        });
+
+};
+
+function exprice_of_make(value) {
+ 
+ 
+console.log(value);
+
+
+};
+
+function exprice_of_location(value) {
+ 
+ 
+        var inputDataObj = {
+          'make': value
+        }
+
+        var $submit = $.ajax({
+          type: 'GET',
+          url:"/loct_code_of/",
+          data: {data: JSON.stringify(inputDataObj)},
+          contentType: 'application/json'
+        });
+
+
+        $submit.done(function(statement) {
+
+            
+            var model_input = document.getElementById("rto_code");
+            model_input.value = statement.loct_code;
+            var model_input1 = document.getElementById("rto_state_code");
+            model_input1.value = statement.state_code;
+            var model_input2 = document.getElementById("rto_city_code");
+            model_input2.value = statement.city_code;
+            console.log(statement.city_code);
+
+            
+          
+
+        });
+
+
+
+};
+
+
+
+
+</script>
+
+  </body>
+</html>

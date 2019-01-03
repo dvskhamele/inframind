@@ -1,0 +1,202 @@
+
+
+          var $input_state = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"State" ,style:"display:none;margin-top:24px;font-weight:500!important "})
+  
+          var $input_state_i = $("<input>", 
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;display:none; color:#0a293e;border-radius:1.25rem;width:20rem", 
+
+         id:"state", name:"state" ,placeholder:"State" }
+            )
+
+$input_state.append($input_state_i)
+$form.append($input_state)
+
+       var $input_reg_date1  =     $("<div>", 
+         { class:"col-md-6 form-group font-weight-bold",style:"font-weight:500!important",text:"First Registration Date"})
+
+          var $input_reg_date_i1 = $("<input>", 
+         { class:"form-control ", type:"date" ,id:"reg_date", name:"reg_date" ,placeholder:"First Registration Date" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem" }
+            )
+            
+$input_reg_date1.append($input_reg_date_i1)
+$form.append($input_reg_date1)
+
+
+          var $input_model = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Model" ,style:"display:none;margin-top:24px;font-weight:500!important "})
+  
+          var $input_model_i = $("<input>", 
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;display:none; color:#0a293e;border-radius:1.25rem;width:20rem", 
+
+         id:"model", name:"model" ,placeholder:"Model" }
+            )
+
+
+$input_model.append($input_model_i)
+$form.append($input_model)
+
+
+          var $input_make = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Make" ,style:"display:none;margin-top:24px;font-weight:500!important "})
+  
+          var $input_make_i = $("<input>", 
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;display:none; color:#0a293e;border-radius:1.25rem;width:20rem", 
+
+         id:"make", name:"make" ,placeholder:"Make" }
+            )
+
+
+$input_make.append($input_make_i)
+$form.append($input_make)
+
+          var $input_reg  =     $("<div>", 
+         { class:"col-md-6 form-group font-weight-bold",style:"font-weight:500!important", text:"Current registration type"})
+
+          var $input_reg_i = $("<select>", 
+         { class:"form-control ", type:"select" ,id:"reg_type", name:"reg_type" ,placeholder:"" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem"}
+            )
+
+          var $opt2 = $("<option>", 
+         { class:"form-control", value:"true", text:"INDIVIDUAL "}
+            )
+          var $opt1 = $("<option>", 
+         { class:"form-control", value:"false", text:"Company"}
+            )
+
+$input_reg_i.append($opt2)
+$input_reg_i.append($opt1)
+
+$input_reg.append($input_reg_i)
+$form.append($input_reg)
+
+
+
+          var $input_veh  =     $("<div>", 
+         { class:"col-md-6 form-group font-weight-bold",style:"font-weight:500!important", text:"Your Vehical is uninsured for more than 6 month"})
+
+          var $input_veh_i = $("<select>", 
+         { class:"form-control ", type:"select" ,id:"vehical", name:"vehical" ,placeholder:"" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem"}
+            )
+
+          var $opt2 = $("<option>", 
+         { class:"form-control", value:"true", text:"Yes"}
+            )
+          var $opt1 = $("<option>", 
+         { class:"form-control", value:"false", text:"No"}
+            )
+$input_veh_i.append($opt2)
+$input_veh_i.append($opt1)
+
+$input_veh.append($input_veh_i)
+$form.append($input_veh)
+
+
+
+       var $input_end_date  =     $("<div>", 
+         { class:"col-md-6 form-group font-weight-bold",style:"font-weight:500!important",text:"Previous policy end date"})
+
+          var $input_end_date_i = $("<input>", 
+         { class:"form-control ", type:"date" ,id:"reg_date", name:"reg_date" ,placeholder:"Previous policy end date" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem" }
+            )
+
+
+$input_end_date.append($input_end_date_i)
+$form.append($input_veh)
+
+          var $input_make2 = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"..." ,style:"display:none;margin-top:24px;font-weight:500!important "})
+  
+          var $input_make_i2 = $("<input>", 
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;display:none; color:#0a293e;border-radius:1.25rem;width:20rem", 
+
+         id:"...", name:"..." ,placeholder:"..." }
+            )
+
+
+$input_make2.append($input_make_i2)
+$form.append($input_make2)
+
+          var $input_prev_policy  =     $("<div>", 
+         { class:"col-md-6 form-group font-weight-bold",style:"font-weight:500!important", text:"Previous policy was a full year policy?"})
+
+          var $input_prev_policy_i = $("<select>", 
+         { class:"form-control ", type:"select" ,id:"prev_policy", name:"prev_policy" ,placeholder:"" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem"}
+            )
+
+          var $opt2 = $("<option>", 
+         { class:"form-control", value:"true", text:"Yes"}
+            )
+          var $opt1 = $("<option>", 
+         { class:"form-control", value:"false", text:"No"}
+            )
+
+
+
+$input_prev_policy.append($input_prev_policy_i)
+$form.append($input_prev_policy)
+
+          var $input_cover = $("<div>", 
+         {class:"col-md-6 form-group font-weight-bold",style:"margin-top:24px;font-weight:500!important font-weight-bold",text:"Personal accident cover for passanger" ,style:"display:none;margin-top:24px;font-weight:500!important "})
+  
+          var $input_cover_i = $("<input>", 
+         {style:"margin-top: 4px; transition:  ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00;display:none; color:#0a293e;border-radius:1.25rem;width:20rem", 
+
+         id:"cover", name:"cover" ,placeholder:"Cover for Passanger" }
+            )
+
+
+$input_cover.append($input_cover_i)
+$form.append($input_cover)
+
+          var $input_check  =     $("<div>", 
+         { class:"col-md-7 checkbox-inline form-inline font-weight-light",text:"Get protection for Accesories "})
+
+          var $input_check_i = $("<input>", 
+         { type:"checkbox" ,id:"check", name:"check" ,placeholder:"" ,required:"true",style:"margin-left:5px;margin-top: 4px; width:31rem"}
+            )
+
+
+$input_check.append($input_check_i)
+$form.append($input_check)
+
+          var $input_check2  =     $("<div>", 
+         { class:"col-md-7 checkbox-inline form-inline font-weight-light",text:"Get additional Discount "})
+
+          var $input_check_i2 = $("<input>", 
+         { type:"checkbox" ,id:"check2", name:"check2" ,placeholder:"" ,required:"true",style:"margin-left:5px;margin-top: 4px; width:31rem"}
+            )
+
+
+$input_check2.append($input_check_i2)
+$form.append($input_check)
+
+          var $input_number  =     $("<div>", 
+         { class:"col-md-6 form-group font-weight-bold" ,style:"font-weight:500!important",text:"Mobile Number"})
+
+          var $input_number_i = $("<input>", 
+         { class:"form-control ", type:"number" , value:"", id:"number", name:"number" ,placeholder:"Mobile number" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem"}
+            )
+
+
+$input_number.append($input_number_i)
+$form.append($input_number)
+
+
+          var $input_email  =     $("<div>", 
+         { class:"col-md-6 form-group font-weight-bold",style:"font-weight:500!important",text:"Email"})
+
+          var $input_email_i = $("<input>", 
+         { class:"form-control ", type:"email" ,id:"email", name:"email" ,placeholder:"Email" ,required:"true",style:"margin-top: 4px; transition: border-color 1.15s ease-in-out,box-shadow 2.15s ease-in-out;border:1px solid #8eaece; background-color:#f1eaea00; color:#0a293e;border-radius:1.25rem;width:20rem" }
+            )
+
+
+$input_email.append($input_email_i)
+$form.append($input_email)
+
+
+        $row.append($form);
+        $mapCase.append($row);
+        $chatlog.append($mapCase);
+
+

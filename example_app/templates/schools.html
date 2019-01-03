@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi">
+    </script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title> Narcotics - Heatmap </title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+<body >
+
+    <div id="map"></div>
+
+    <script>
+
+      // This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dImhmK-fbMwnIMRmLWer9N_P2U7YfLs&libraries=visualization">
+
+      var map, heatmap;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: 
+                {lat: 19.0495536, lng: 72.8747062},
+          mapTypeId: 'satellite'
+        });
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(),
+          map: map
+        });
+
+
+
+var marker = new google.maps.Marker({
+    position:  
+                {lat: 28.526613, lng: 77.1614682},
+    map: map,
+    title: 'गुरुकुल स्कूल '
+  });
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.6179422, lng: 77.1318779  },
+            
+    map: map,
+    title: 'जागृति हायर सेकंडरी स्कूल'
+  });
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.6182076, lng: 77.1318777 },
+            
+    map: map,
+    title: 'वैष्णव बल मंदिर गर्ल्स हाईयर सेकंडरी विद्याल'
+  });
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.6188202, lng: 76.9499954 },
+            
+    map: map,
+    title: 'सत्य साईं स्कूल'
+  });
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.5214071, lng: 77.1361749 },
+            
+    map: map,
+    title: 'प्रेस्टीज इंटरनेशनल'
+  });
+
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.6188202, lng: 76.9499954 },
+            
+    map: map,
+    title: 'स्कॉलर्स डेन विद्यालय'
+  });
+
+  
+  
+  
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.7252638, lng: 77.0567292 },
+            
+    map: map,
+    title: 'एक्सीलेंस विद्यालय खंडवा'
+  });
+
+  
+  
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.525507, lng: 77.1840862 },
+            
+    map: map,
+    title: 'ICICI Bank Mohan Co, operative Ind Estate New Delhi - Branch & ATM'
+  });
+
+
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.6923729, lng: 76.9954194 },
+            
+    map: map,
+    title: 'ICICI Bank Mohan Co, operative Ind Estate New Delhi - Branch & ATM'
+  });
+
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 28.5471945, lng: 77.0374669 },
+            
+    map: map,
+    title: 'ICICI Bank Mohan Co, operative Ind Estate New Delhi - Branch & ATM'
+  });
+     
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 19.1070845, lng: 72.8821504 },
+            
+    map: map,
+    title: 'ICICI Lombard General Insurance Co. Ltd, Andheri (E), Mumbai, Maharashtra'
+  });
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 18.9333571, lng: 72.8314793 },
+            
+    map: map,
+    title: 'ICICI Lombard General Insurance Co. Ltd, Fort, Mumbai'
+  });
+
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 19.1862033, lng: 72.8276892 },
+            
+    map: map,
+    title: 'ICICI Lombard General Insurance Co. Ltd, Malad, Mumbai'
+  });
+
+
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 19.0163602, lng: 72.8249249 },
+            
+    map: map,
+    title: 'ICICI Lombard General Insurance Co. Ltd, Prabhadevi, Mumbai'
+  });
+
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 19.0495536, lng: 72.8747062 },
+            
+    map: map,
+    title: 'ICICI Lombard General Insurance Co. Ltd, Sion, Mumbai'
+  });
+
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 19.1164241, lng: 72.8484543 },
+            
+    map: map,
+    title: 'ICICI Lombard General Insurance Co. Ltd, Teli gali, Mumbai'
+  });
+
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 19.2038274, lng: 72.9752509 },
+            
+    map: map,
+    title: 'ICICI Lombard General Insurance Co. Ltd, Thane, Mumbai'
+  });
+
+var marker = new google.maps.Marker({
+    position: 
+                {lat: 19.0644061, lng: 72.9946395 },
+            
+    map: map,
+    title: 'ICICI Lombard General Insurance Co. Ltd, Vashi , Mumbai'
+  });
+
+
+
+
+
+
+
+      }
+
+      function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      }
+
+      function changeGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+
+      function changeRadius() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+      }
+
+      function changeOpacity() {
+        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+      }
+
+      // Heatmap data: 500 Points
+      function getPoints() {
+        return [
+        ];
+      }
+    </script>
+
+
+
+
+  </body>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dImhmK-fbMwnIMRmLWer9N_P2U7YfLs&libraries=visualization&callback=initMap">
+    </script>
+    <script type="text/javascript">
+
+      // Load the Google Transliterate API
+      google.load("elements", "1", {
+            packages: "transliteration"
+          });
+
+      google.setOnLoadCallback(onLoad);
+    </script>
+
+</html>

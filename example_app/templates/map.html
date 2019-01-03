@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title> Narcotics - Heatmap </title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 25%;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+<div id="floating-panel" class="panel" style="position:fixed; font-family:Arial; background-color: #5398d4; z-index: 1;
+padding:0px;border-color: #2398d4;
+border-bottom-style: double;
+border-bottom-width: 2px;
+box-sizing: border-box;
+padding:8px;
+margin:8px;
+word-spacing: 0px;
+min-width:0px; padding:0,margin:0;
+box-shadow: 0 2px 4px rgb(0, 0, 0, 0.12); top:0;
+">
+<span style="color:white;">Narcotics</span>
+      <button class="btn btn-primary" onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button class="btn btn-primary" onclick="changeRadius()">Change radius</button>
+      <button class="btn btn-primary" onclick="changeOpacity()">Change opacity</button>
+      </div>
+
+    <div id="map"></div>
+    <br>
+      <form action="{% url 'locations:challan_list' %}">
+      <button class="btn btn-primary">See Challans</button></form>
+
+<div class="pagination" style="padding:0px;border-color: #f5f5f5;
+border-bottom-style: double;
+border-bottom-width: 2px;
+">
+<span class="step-links">
+{% if locations.has_previous %}
+<a href="?page={{ locations.previous_page_number }}"> < </a>
+{% endif %}
+{% if locations.has_next %}
+<a href="?page={{ locations.next_page_number }}"> > </a>
+{% endif %}
+</span>
+</div>
+
+    <script>
+
+      // This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dImhmK-fbMwnIMRmLWer9N_P2U7YfLs&libraries=visualization">
+
+      var map, heatmap;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: 
+                {lat: 28.233174, lng: 77.335959 },
+          mapTypeId: 'satellite'
+        });
+
+        heatol = new google.maps.visualization.HeatmapLayer({
+          data: getol(),
+          map: map
+        });
+
+        heatml = new google.maps.visualization.HeatmapLayer({
+          data: getml(),
+          map: map
+        });
+        heatmotl = new google.maps.visualization.HeatmapLayer({
+          data: getotl(),
+          map: map,
+        });
+        heatgl = new google.maps.visualization.HeatmapLayer({
+          data: getgl(),
+          map: map,
+        });
+
+        var gradient1 = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        var gradient2 = [
+          'rgba(0, 55, 255, 0)',
+          'rgba(0, 55, 255, 1)',
+          'rgba(0, 91, 255, 1)',
+          'rgba(0, 27, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 55, 1)',
+          'rgba(0, 0, 23, 1)',
+          'rgba(0, 0, 91, 1)',
+          'rgba(0, 0, 59, 1)',
+          'rgba(0, 0, 27, 1)',
+          'rgba(63, 0,1, 1)',
+          'rgba(127, 0, 3, 1)',
+          'rgba(191, 0, 1, 1)',
+          'rgba(25, 0, 0, 1)'
+        ]
+        var gradient3 = [
+          'rgba(110, 55, 255, 0)',
+          'rgba(110, 55, 255, 1)',
+          'rgba(110, 91, 255, 1)',
+          'rgba(110, 27, 255, 1)',
+          'rgba(110, 6, 255, 1)',
+          'rgba(110, 4, 255, 1)',
+          'rgba(110, 0, 23, 1)',
+          'rgba(0, 110, 91, 1)',
+          'rgba(0, 10, 59, 1)',
+          'rgba(0, 10, 27, 1)',
+          'rgba(6, 110, 91, 1)',
+          'rgba(117, 0, 63, 1)',
+          'rgba(11, 110, 31, 1)',
+          'rgba(215, 0, 0, 1)'
+        ]
+        heatml.set('gradient', heatml.get('gradient') ? null : gradient1);
+        heatol.set('gradient', heatol.get('gradient') ? null : gradient2);
+        heatgl.set('gradient', heatgl.get('gradient') ? null : gradient3);
+        }
+
+
+      function toggleHeatmap() {
+        heatml.setMap(heatml.getMap() ? null : map);
+        heatol.setMap(heatol.getMap() ? null : map);
+        heatgl.setMap(heatgl.getMap() ? null : map);
+      }
+
+      function changeRadius() {
+        heatml.set('radius', heatml.get('radius') ? null : 20);
+        heatol.set('radius', heatol.get('radius') ? null : 20);
+        heatgl.set('radius', heatgl.get('radius') ? null : 20);
+      }
+
+      function changeOpacity() {
+        heatml.set('opacity', heatml.get('opacity') ? null : 0.2);
+        heatol.set('opacity', heatol.get('opacity') ? null : 0.2);
+        heatgl.set('opacity', heatgl.get('opacity') ? null : 0.2);
+      }
+              // Heatmap data: 500 Points
+      function getol() {
+        return [
+{location: new google.maps.LatLng( 28.6233174 , 77.1335959 ), gradient: 'rgba(255,0,0,1'},
+        ];
+      }
+      function getgl() {
+        return [
+{location: new google.maps.LatLng(28.233174,77.335959), gradient: 'rgba(255,0,0,1'},
+        ];
+      }
+      function getml() {
+        return [
+{location: new google.maps.LatLng(28.3317 ,77.335959 ), gradient: 'rgba(255,0,0,1'},
+        ];
+      }
+      function getotl() {
+        return [
+{location: new google.maps.LatLng(28.174, 77.335959), gradient: 'rgba(255,0,0,1'},
+        ];
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5dImhmK-fbMwnIMRmLWer9N_P2U7YfLs&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>
